@@ -1,29 +1,21 @@
-import React from 'react'
-import {FaInstagram} from 'react-icons/fa';
-// import './css/Footer.css'
+import React from 'react';
+/* Import for picture */
+import moi from '../assets/yute-artist.png'
+import backgroundImage from '../assets/ta-background.png'
 
 const Footer = () => {
     return (
-        <div className='footer w-full bg-black text-[#eee] px-4 py-8'>
-            <div className='container max-w-[1240px] text-center m-auto'>
-                <ul className='flex justify-center'>
-
-                    <li className='nav-item p-4'>
-                        <a href="https://github.com/toniu" target="_blank" rel="noopener noreferrer"
-                            className="mx-8 text-5xl
-                            hover:text-blue-400 transition 100">
-                            <FaInstagram />
-                        </a>
-
-                    </li>
-                </ul>
-                <div className='bottom text-center pt-12'>
-                    <span className='line mb-4'></span>
-                    <p>2024 toni., inc. all rights reserved</p>
-                </div>
+        <section className='h-screen flex justify-center items-center'
+        style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+            <div className='container flex flex-col justify-center items-center space-y-3'>
+                <img className='py-3 w-[300px] h-[300px] text-center rounded-lg
+                hover:scale-110 cursor-pointer transition 100'
+                src={moi} alt='me'/>
+                <h3 className='py-2 text-white text-xl'> "a budding young artist in the nursery" </h3>
+                <h1 className='py-2 text-6xl md:text-6xl text-white'> fin. </h1>
             </div>
-        </div>
-    )
-}
+        </section>
+    );
+};
 
-export default Footer
+export default Footer;
