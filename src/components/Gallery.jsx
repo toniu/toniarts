@@ -7,12 +7,18 @@ import P2 from '../assets/pic-2.jpg';
 import P3 from '../assets/pic-3.jpg';
 import P4 from '../assets/pic-4.jpg';
 
+/* Real-life comparison images */
+import CP1 from '../assets/cp-1.jpg';
+import CP2 from '../assets/cp-2.jpg';
+import CP3 from '../assets/cp-3.jpg';
+import CP4 from '../assets/cp-4.jpg';
+
 const Gallery = () => {
     const images = [
-        { title: '1', imageUrl: P1, compareUrl: '' },
-        { title: '2', imageUrl: P2, compareUrl: '' },
-        { title: '3', imageUrl: P3, compareUrl: '' },
-        { title: '4', imageUrl: P4, compareUrl: '' },
+        { title: 'jozif.', imageUrl: P1, compareUrl: CP1 },
+        { title: 'adut.', imageUrl: P2, compareUrl: CP2 },
+        { title: 'dre.', imageUrl: P3, compareUrl: CP3 },
+        { title: 'jabulani.', imageUrl: P4, compareUrl: CP4 },
     ];
 
     useEffect(() => {
@@ -67,9 +73,13 @@ const Gallery = () => {
                     <div className='divs-container py-12 flex justify-items-stretch gap-x-[20px] md:gap-x-[40px]'>
                         {images.map((nextImage, index) => (
                             <div key={index}>
-                                <img className='w-[400px] h-4/5 object-cover object-center hover:scale-110 transition 200'
-                                    src={nextImage.imageUrl} alt={nextImage.title} />
-                                <h2>
+                                <div className='flex hover:scale-110 transition 200'>
+                                    <img className='w-[300px] h-4/5 rounded-lg object-cover object-center'
+                                        src={nextImage.imageUrl} alt={nextImage.title} />
+                                    <img className='w-[200px] h-[260px] rounded-lg relative right-[3em] top-[19em]'
+                                        src={nextImage.compareUrl} alt=''/>
+                                </div>
+                                <h2 className='py-6 text-xl md:text-3xl'>
                                     {nextImage.title}
                                 </h2>
                             </div>
