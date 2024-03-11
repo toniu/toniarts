@@ -10,7 +10,53 @@
     font-family: "Roboto Slab", serif;
 }
 
-html, body, main {
+html,
+body,
+main {
     width: 100%;
     height: 100%;
+}
+
+
+.padding-block {
+    display: flex;
+    text-align: center;
+    font-size: 5vmax;
+    justify-content: center;
+    align-items: center;
+    background-color: #efefef;
+    color: #333;
+}
+
+.scroll-carousel {
+    background-color: red;
+}
+
+.sticky-box {
+    position: sticky;
+    top: 0;
+    overflow: hidden;
+}
+
+.transform-box {
+    display: flex;
+}
+
+.box {
+    flex-shrink: 0;
+    /* need to hardcode box sizes, else images loading throws off calculations */
+    /* could be a job for imagesLoaded */
+    width: 65rem;
+    height: 100vh;
+    margin: 0 2rem;
+}
+
+.box--narrower {
+    width: 20rem;
+}
+
+.img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }

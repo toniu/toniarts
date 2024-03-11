@@ -39,7 +39,7 @@ const About = () => {
   return (
 
       <div
-        className='sticky overflow-hidden h-screen  about-section'
+        className='sticky overflow-hidden h-screen'
         style={{
           backgroundImage: `url(${backgroundImage})`,
           backgroundSize: 'cover',

@@ -45,8 +45,8 @@ const Footer = () => {
                     alt='me'
                     animate={controls}
                 />
-                <h3 className='py-2 text-white text-lg md:text-xl'>"a budding young artist in the nursery"</h3>
-                <h1 className='py-2 text-6xl md:text-6xl text-white'>fin.</h1>
+                <h3 className='py-2 text-white text-base md:text-xl'>"a budding young artist in the nursery"</h3>
+                <h1 className='py-2 text-5xl md:text-6xl text-white'>fin.</h1>
                 <ul className='flex justify-center text-3xl text-white'>
                     <li className='nav-item p-2'>
                         <a href="https://www.instagram.com/toninekatu" target="_blank" rel="noopener noreferrer"
