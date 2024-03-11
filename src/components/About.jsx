@@ -37,9 +37,9 @@ const About = () => {
   };
 
   return (
-    <div className='sticky-parent h-auto'>
+
       <div
-        className='sticky overflow-hidden h-screen top-0 about-section'
+        className='sticky overflow-hidden h-screen  about-section'
         style={{
           backgroundImage: `url(${backgroundImage})`,
           backgroundSize: 'cover',
@@ -50,14 +50,14 @@ const About = () => {
           <div className='divs-container text-white block gap-x-0 gap-y-12 md:gap-x-12 md:gap-y-0'>
             <div
               id='section-a'
-              className='bg-black  h-screen pt-20 bg-opacity-60 block md:flex justify-center items-center'
+              className='bg-black h-screen pt-20 bg-opacity-60 block md:flex justify-center items-center'
             >
               <motion.p
                 ref={(element) => {
                   ref(element);
                   elementRef.current = element;
                 }}
-                className='p-3 text-white text-sm md:text-lg w-[70%] text-center mx-auto'
+                className='p-1 text-white text-sm md:text-base w-[70%] text-center mx-auto'
                 initial='hidden'
                 animate={{
                   opacity: 1,
@@ -78,7 +78,7 @@ const About = () => {
                   elementRef.current = element;
                 }}
                 src={aboutPics}
-                className='h-[200px] w-[200px] md:h-[300px] md:w-[300px] mx-auto'
+                className='p-5 h-[200px] w-[200px] md:h-[300px] md:w-[300px] mx-auto'
                 alt='about'
                 initial='hidden'
                 animate={{
@@ -91,7 +91,7 @@ const About = () => {
                   ref(element);
                   elementRef.current = element;
                 }}
-                className='p-3 text-white text-sm md:text-lg w-[70%] text-center mx-auto'
+                className='p-1 text-white text-sm md:text-base w-[70%] text-center mx-auto'
                 initial='hidden'
                 animate={{
                   opacity: 1,
@@ -109,7 +109,7 @@ const About = () => {
           </div>
         </div>
       </div>
-    </div>
+
   );
 };
 
