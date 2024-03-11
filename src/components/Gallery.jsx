@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 
 import galleryBackground from '../assets/draw-background.jpg';
 /* Gallery images */
@@ -16,7 +16,6 @@ import CP1 from '../assets/cp-1.jpg';
 import CP2 from '../assets/cp-2.jpg';
 import CP3 from '../assets/cp-3.jpg';
 import CP4 from '../assets/cp-4.jpg';
-
 import CP5 from '../assets/cp-5.jpg';
 import CP6 from '../assets/cp-6.jpg';
 import CP7 from '../assets/cp-7.jpg';
@@ -73,26 +72,36 @@ const Gallery = () => {
         scrollSection.style.transform = `translateX(${-(percentage * scrollableWidth / 100)}px)`;
     }
 
-
     return (
         <div className='sticky-parent h-[500vh]'>
-            <div className='sticky overflow-hidden h-screen top-0 bg-black'
-                style={{
+            <div className='sticky overflow-hidden h-screen top-0 bg-white'>
+                <div className="background" style={{
                     backgroundImage: `url(${galleryBackground})`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
-                }}>
-                <div className='scroll-section absolute h-full w-[500vw] will-change-transform px-[5vw] py-0 top-0 bg-gray-300/30 backdrop-blur-[5px] '>
-                    <div className='divs-container py-12 flex justify-items-stretch gap-x-[20px] md:gap-x-[40px]'>
+         
+                    position: 'absolute',
+                    opacity: 0.33,
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    zIndex: -1,
+                    width: '100%',
+                    height: '100%',
+                }} />
+                <div className='scroll-section absolute h-full will-change-transform px-[5vw] py-0 top-0 '>
+                    <div className='divs-container py-12 flex gap-x-[20px] md:gap-x-[40px]'
+                        style={{ width: `${(images.length - 1) * 100}%` }}>
                         {images.map((nextImage, index) => (
-                            <div key={index}>
-                                <div className='flex hover:scale-110 transition 200'>
-                                    <img className='w-[300px] h-4/5 rounded-lg object-cover object-center'
+                            <div key={index} className='w-full'>
+                                <div className='p-5 flex hover:scale-110 transition 200'>
+                                    <img className='w-[280px] h-4/5 rounded-lg object-cover object-center'
                                         src={nextImage.imageUrl} alt={nextImage.title} />
-                                    <img className='w-[200px] h-[260px] rounded-lg relative right-[3em] top-[19em]'
+                                    <img className='w-[180px] h-[240px] rounded-lg relative right-[3em] top-[19em]'
                                         src={nextImage.compareUrl} alt=''/>
                                 </div>
-                                <h2 className='py-6 text-xl md:text-3xl'>
+                                <h2 className='px-2 py-6 text-2xl md:text-3xl'>
                                     {nextImage.title}
                                 </h2>
                             </div>
@@ -101,7 +110,6 @@ const Gallery = () => {
                 </div>
             </div>
         </div>
-
     );
 };
 

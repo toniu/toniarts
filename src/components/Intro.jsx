@@ -1,36 +1,45 @@
-import React, { useState, useEffect } from 'react';
-//import ScrollDown from './ScrollDown.jsx';
+import React, { useEffect, useState, useRef } from 'react';
 import bgVideo from '../assets/intro-video.mp4';
+import { useInView } from 'react-intersection-observer';
+import { motion, useAnimation } from 'framer-motion';
 
 const Intro = () => {
-    const [blurOpacity, setBlurOpacity] = useState(1);
-
+    const [scrollY, setScrollY] = useState(0);
+    const controls = useAnimation();
+    const { ref, inView } = useInView();
+    const elementRef = useRef();
+  
     useEffect(() => {
-        const handleScroll = () => {
-            const scrollY = window.scrollY;
-            const maxOpacity = 0.9; // Maximum opacity for the backdrop blur
-            const minOpacity = 0.2; // Minimum opacity for the backdrop blur
-
-            // Calculate opacity based on scroll position
-            const opacity = 1 - (scrollY / 100); // Adjust the division factor as needed
-            const clampedOpacity = Math.max(minOpacity, Math.min(opacity, maxOpacity));
-
-            // Update state with the new opacity
-            setBlurOpacity(clampedOpacity);
-        };
-
-        window.addEventListener('scroll', handleScroll);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
+      if (inView) {
+        controls.start('visible');
+      }
+    }, [controls, inView]);
+  
+    useEffect(() => {
+      const handleScroll = () => {
+        setScrollY(window.scrollY);
+      };
+  
+      window.addEventListener('scroll', handleScroll);
+  
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
     }, []);
+  
+    const calculatePosition = (element) => {
+      if (!element) return 0; // Return 0 if element is undefined
+      const yPos = element.offsetTop - scrollY;
+      const windowHeight = window.innerHeight;
+      const position = yPos / windowHeight;
+      return position;
+    };
 
     return (
         <section className='h-screen flex justify-center items-center relative overflow-hidden'>
             {/* Background Video with backdrop blur */}
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
-                <video className= {`absolute top-0 left-0 w-full h-full object-cover filter backdrop-blur-md bg-gray-900/[${blurOpacity}]`}
+                <video className= {`absolute top-0 left-0 w-full h-full object-cover filter backdrop-blur-md bg-gray-900`}
                     autoPlay loop muted>
                     <source src={bgVideo} type="video/mp4" />
                 </video>
@@ -38,8 +47,32 @@ const Intro = () => {
             
             {/* Content */}
             <div className='relative container z-10 text-center'>
-                <h1 className='text-6xl md:text-8xl text-[#362218] font-bold'> toniarts. </h1>
-                <h3 className='text-xl md:text-2xl text-[#174135] font-bold'> a visual gallery of my drawings </h3>
+                <motion.h1 
+                     ref={(element) => {
+                        ref(element);
+                        elementRef.current = element;
+                      }}
+                      initial='hidden'
+                        animate={{
+                        opacity: 1,
+                        y: calculatePosition(elementRef.current) * 110,
+                        }}
+                    className='text-6xl md:text-8xl text-[#362218] font-bold'>
+                    toniarts.
+                </motion.h1>
+                <motion.h3 
+                     ref={(element) => {
+                        ref(element);
+                        elementRef.current = element;
+                      }}
+                      initial='hidden'
+                        animate={{
+                        opacity: 1,
+                        y: calculatePosition(elementRef.current) * 110,
+                        }}
+                    className='text-xl md:text-2xl text-[#174135] font-bold'>
+                    a visual gallery of my drawings
+                </motion.h3>
             </div>
         </section>
     );
