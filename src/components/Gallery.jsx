@@ -29,11 +29,12 @@ const Gallery = () => {
         { title: 'dre.', pronounce: 'dray', imageUrl: P3, compareUrl: CP3 },
         { title: 'samuel.', pronounce: 'sah-mu-ell', imageUrl: P7, compareUrl: CP7 },
         { title: 'jabu.', pronounce: 'jah-bu', imageUrl: P4, compareUrl: CP4 },
-        { title: 'grace.', pronounce: 'ɡreɪs',imageUrl: P6, compareUrl: CP6 },
+        { title: 'grace.', pronounce: 'ɡreɪs', imageUrl: P6, compareUrl: CP6 },
     ];
 
     const [scrollPosition, setScrollPosition] = useState(0);
     const [activeIndex, setActiveIndex] = useState(0);
+    const [overlayImage, setOverlayImage] = useState(null);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -74,14 +75,19 @@ const Gallery = () => {
         scrollSection.style.transform = `translateX(${-(percentage * scrollableWidth / 100)}px)`;
         setScrollPosition(percentage);
 
-        for (let i = 0; i < divs.length; i++) {
-            const divOffset = divs[i].offsetTop - offsetTop;
-            if (divOffset <= window.innerHeight / 2 && divOffset + divs[i].offsetHeight >= window.innerHeight / 2) {
-                setActiveIndex(i);
-                break;
-            }
-        }
+        // Calculate active index based on scroll position
+        const scrollPercentage = percentage / 100;
+        const activeIndex = Math.round(scrollPercentage * (images.length - 1));
+        setActiveIndex(activeIndex);
     }
+
+    const handleImageClick = (imageUrl) => {
+        if (overlayImage === imageUrl) {
+            setOverlayImage(null); // Close overlay if clicked image is already open
+        } else {
+            setOverlayImage(imageUrl); // Open overlay with clicked image
+        }
+    };
 
     return (
         <div className='sticky-parent h-[500vh]'>
@@ -92,7 +98,7 @@ const Gallery = () => {
                     backgroundPosition: 'center',
 
                     position: 'absolute',
-                    opacity: 0.33,
+                    opacity: 0.2,
                     top: 0,
                     left: 0,
                     right: 0,
@@ -103,10 +109,10 @@ const Gallery = () => {
                 }} />
                 <div className='scroll-section absolute h-full will-change-transform px-[5vw] py-0 top-0 '>
                     <div className='divs-container py-20 flex gap-x-[20px] md:gap-x-[40px]'
-                        style={{ width: `${(images.length) * 100}%` }}>
+                        style={{ width: `${images.length * 100}%` }}>
                         {images.map((nextImage, index) => (
-                            <div key={index} className='w-full '>
-                                <div className='p-5 flex justify-center hover:scale-110 transition 200'>
+                            <div key={index} className='w-4/5'>
+                                <div className='p-5 flex justify-center hover:scale-110 transition 200 cursor-zoom-in' onClick={() => handleImageClick(nextImage.imageUrl)}>
                                     <img className='w-[280px] h-4/5 rounded-lg object-cover object-center'
                                         src={nextImage.imageUrl} alt={nextImage.title} />
                                     <div className='p-1 block'>
@@ -116,7 +122,7 @@ const Gallery = () => {
                                         <h3 className='px-3 text-2xl md:text-3xl'>  "{nextImage.pronounce}" </h3>
                                         <span className='px-3 text-6xl md:text-7xl opacity-10'> {nextImage.title} </span>
                                     </div>
-                                    <img className='w-[180px] h-[240px] rounded-lg relative right-[10em] top-[19em]'
+                                    <img className='w-[180px] h-[240px] rounded-lg relative right-[12em] top-[19em]'
                                         src={nextImage.compareUrl} alt='' />
                                 </div>
                             </div>
@@ -138,7 +144,26 @@ const Gallery = () => {
                     {activeIndex + 1} / {images.length}
                 </div>
             </div>
-
+            {/* Overlay */}
+            {overlayImage && (
+                <motion.div
+                    className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-75 flex items-center justify-center
+                    hover:cursor-zoom-out"
+                    onClick={() => setOverlayImage(null)}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                >
+                    <motion.img
+                        className="max-h-[90vh] max-w-[90vw] "
+                        src={overlayImage}
+                        alt="Overlay Image"
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        exit={{ scale: 0 }}
+                    />
+                </motion.div>
+            )}
         </div>
     );
 };

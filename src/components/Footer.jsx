@@ -40,7 +40,7 @@ const Footer = () => {
         <section className='h-screen flex justify-center items-center relative bg-black bg-opacity-60 footer-section'>
             <div className='container  bg-opacity-40 flex flex-col justify-center items-center space-y-7'>
                 <motion.img 
-                    className='w-[250px] h-[250px] object-cover rounded-lg hover:scale-110 cursor-pointer transition duration-100'
+                    className='w-[220px] h-[220px] object-cover rounded-lg hover:scale-110 cursor-pointer transition duration-100'
                     src={moi} 
                     alt='me'
                     animate={controls}
