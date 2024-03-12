@@ -1,11 +1,10 @@
-import React, { useState, useCallback, useEffect, useRef } from 'react'
-import { motion } from 'framer-motion'; // Import motion from framer-motion
-import { useSpring, animated as a, to } from 'react-spring'
-import useWindowScroll from '@react-hook/window-scroll'
-import useScrollWidth from './utils/useScrollWidth'
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, useScroll } from 'framer-motion';
+import useWindowScroll from '@react-hook/window-scroll';
+import useScrollWidth from './utils/useScrollWidth';
 
-
-import galleryBackground from '../assets/draw-background.jpg';
+/* Images */
+import galleryBackground from '../assets/draw-background.png';
 import P1 from '../assets/pic-1.jpg';
 import P2 from '../assets/pic-2.jpg';
 import P3 from '../assets/pic-3.jpg';
@@ -25,83 +24,80 @@ import CP7 from '../assets/cp-7.jpg';
 import CP8 from '../assets/cp-8.jpg';
 
 function ScrollCarousel({ children }) {
-    const refHeight = useRef(null)
-    const refTransform = useRef(null)
+    const refHeight = useRef(null);
+    const refTransform = useRef(null);
 
-    const { scrollWidth } = useScrollWidth(refTransform)
+    const { scrollWidth } = useScrollWidth(refTransform);
+    const scrollY = useWindowScroll(45);
 
-    // the argument is the fps that the hook uses,
-    // since react spring interpolates values we can safely reduce this below 60
-    const scrollY = useWindowScroll(45)
-    const [{ st, xy }, set] = useSpring(() => ({ st: 0, xy: [0, 0] }))
+    const top = refHeight.current ? refHeight.current.offsetTop : 0;
+    const width = refHeight.current ? refHeight.current.offsetWidth : 0;
+    const elHeight = scrollWidth - (window.innerWidth - window.innerHeight) + width * 0.5;
 
-    useEffect(() => {
-        set({ st: scrollY })
-    }, [scrollY, set])
+    const interpTransform = (o, xy) => {
+        const mouseMoveDepth = 40;
+        const x = width - (top - o) - width;
 
-    const onMouseMove = useCallback(({ clientX: x, clientY: y }) => set({ xy: [x - window.innerWidth / 2, y - window.innerHeight / 2] }), [])
-
-    const top = refHeight.current ? refHeight.current.offsetTop : 0
-    const width = refHeight.current ? refHeight.current.offsetWidth : 0
-
-    // we want to set the scrolling element *height* to the value of the *width* of the horizontal content
-    // plus some other calculations to convert it from a width to a height value
-    const elHeight = scrollWidth - (window.innerWidth - window.innerHeight) + width * 0.5 // scroll away when final viewport width is 0.5 done
-
-    const interpTransform = to([st, xy], (o, xy) => {
-        const mouseMoveDepth = 40 // not necessary, but nice to have
-        const x = width - (top - o) - width
-
-        // (width * 0.5) so that it starts moving just slightly before it comes into view
         if (x < -window.innerHeight - width * 0.5) {
-            // element is not yet in view, we're currently above it. so don't animate the translate value
-            return `translate3d(${window.innerHeight}px, 0, 0)`
+            return `translate3d(${window.innerHeight}px, 0, 0)`;
         }
 
         if (Math.abs(x) > elHeight) {
-            // element is not in view, currently below it.
-            return `translate3d(${elHeight}px, 0, 0)`
+            return `translate3d(${elHeight}px, 0, 0)`;
         }
 
-        // else animate as usual
-        return `translate3d(${-x + -xy[0] / mouseMoveDepth}px, ${-xy[1] / mouseMoveDepth}px, 0)`
-    })
+        return `translate3d(${-x + -xy[0] / mouseMoveDepth}px, ${-xy[1] / mouseMoveDepth}px, 0)`;
+    };
+
+    const [activeIndex, setActiveIndex] = useState(0);
+    useEffect(() => {
+        if (elHeight !== 0) {
+            const progress = Math.abs(scrollY) / elHeight;
+            const newIndex = Math.min(children.length - 1, Math.floor(progress * children.length));
+            setActiveIndex(newIndex);
+        }
+    }, [scrollY, elHeight, children.length]);
+
+    const { scrollYProgress } = useScroll();
 
     return (
-        <div onMouseMove={onMouseMove}
-        className="scroll-carousel"
-        ref={refHeight}
-        style={{
-            height: elHeight,
-            }}>
-            <div className="sticky-box bg-white"
-            style={{
-                backgroundImage: `url(${galleryBackground})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                '--tw-bg-opacity': 0.5
-                }}>
-                <div>
-                    {/* Framer Motion Progress Bar */}
-                    <motion.div className="progress-bar"
-                    />
-                    {/* Display active index and total count */}
-                    <div id=''>
-                        1/4
-                    </div>
+        <div
+            className="scroll-carousel"
+            ref={refHeight}
+            style={{ height: elHeight }}
+        >
+            <div
+                className="sticky-box bg-white"
+                style={{
+                    backgroundImage: `url(${galleryBackground})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                }}
+            >
+                <div id='progress-tracker' className='block'>
+                    <motion.div className='p-1 rounded-xl bg-[#174135]' style={{ scaleX: scrollYProgress }} />  
+                    <span className='py-1 px-4 text-xl text-center md:text-2xl'>
+                        {activeIndex + 1}/{children.length}
+                    </span>
                 </div>
-                <a.div style={{ transform: interpTransform }} className="transform-box" ref={refTransform}>
+                <div
+                    style={{ transform: interpTransform(scrollY, [0, 0]) }}
+                    className="transform-box"
+                    ref={refTransform}
+                >
                     {children}
-                </a.div>
+                </div>
             </div>
         </div>
-    )
+    );
 }
+
+
 
 const Gallery = () => {
     const images = [
         { title: 'iwobi.', pronounce: 'ih-woh-bee', description: 'a courageous heart', imageUrl: P8, compareUrl: CP8 },
-        { title: 'jo-vaughn.', pronounce: 'jo-anh', description: 'God is gracious', imageUrl: P1, compareUrl: CP1 },
+        { title: 'jo-vaughn.', pronounce: 'jo-ahn', description: 'God is gracious', imageUrl: P1, compareUrl: CP1 },
         { title: 'memphis.', pronounce: 'mɛm-fɪs', description: 'enduring beauty', imageUrl: P5, compareUrl: CP5 },
         { title: 'adut.', pronounce: 'ə-duut', description: 'complete and powerful', imageUrl: P2, compareUrl: CP2 },
         { title: 'dré.', pronounce: 'dreh', description: 'warrior', imageUrl: P3, compareUrl: CP3 },
@@ -122,29 +118,28 @@ const Gallery = () => {
 
     return (
         <div className='sticky-parent'>
-            
-                <ScrollCarousel className='p-1 '>
-                    {images.map((nextImage, index) => (
-                        <div key={index} className='box bg-red-400/0.1'>
-                            <div className='pt-20 flex bg-yellow-200/0.1 justify-center
+            <ScrollCarousel>
+                {images.map((nextImage, index) => (
+                    <div key={index} className='box w-[50rem] md:w-[65rem]'>
+                        <div className='pt-20 flex justify-center
                             hover:scale-110 transition 200 hover:cursor-zoom-in' onClick={() => handleImageClick(nextImage.imageUrl)}>
-                                <img className='w-[280px] h-4/5 rounded-lg object-cover object-center'
-                                    src={nextImage.imageUrl} alt={nextImage.title} />
-                                <div className='p-1 block'>
-                                    <h2 className='px-3 py-6 text-3xl md:text-4xl'>
-                                        {nextImage.title} ("{nextImage.pronounce}")
-                                    </h2>
-                                    <h3 className='px-3 text-gray-800 text-xl md:text-2xl'>  {nextImage.description} </h3>
-                                    <span className='px-3 text-6xl md:text-7xl opacity-10'> {nextImage.title} </span>
-                                </div>
-                                <img className='w-[180px] h-[240px] rounded-lg relative right-[12em] top-[19em]'
-                                    src={nextImage.compareUrl} alt='' />
+                            <img className='w-[250px] h-4/5 rounded-lg object-cover object-center'
+                                src={nextImage.imageUrl} alt={nextImage.title} />
+                            <div className='p-1 block'>
+                                <h2 className='px-3 py-3 text-xl md:text-4xl font-bold'>
+                                    {nextImage.title} ("{nextImage.pronounce}")
+                                </h2>
+                                <h3 className='px-3 text-gray-800 text-xl md:text-2xl'>  {nextImage.description} </h3>
+                                {/* Shadow title */}
+                                <span className='px-3 text-3xl md:text-7xl opacity-10'> {nextImage.title} </span>
                             </div>
+                            <img className='w-[160px] h-[210px] rounded-lg relative right-[12em] top-[19em]'
+                                src={nextImage.compareUrl} alt='' />
                         </div>
-                    ))}
+                    </div>
+                ))}
+            </ScrollCarousel>
 
-                </ScrollCarousel>
-                
             {/* Overlay */}
             {overlayImage && (
                 <motion.div

@@ -1,6 +1,6 @@
 import { useLayoutEffect, useCallback, useState } from "react";
 
-export default (ref) => {
+const useScrollWidth = (ref) => {
   const [rect, setScrollWidth] = useState(
     getScrollWidth(ref ? ref.current : null)
   );
@@ -53,3 +53,5 @@ function getScrollWidth(element) {
     scrollWidth: element.scrollWidth,
   };
 }
+
+export default useScrollWidth;

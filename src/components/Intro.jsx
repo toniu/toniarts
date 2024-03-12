@@ -37,9 +37,9 @@ const Intro = () => {
 
     return (
         <section className='h-screen flex justify-center items-center relative overflow-hidden'>
-            {/* Background Video with backdrop blur */}
-            <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
-                <video className= {`absolute top-0 left-0 w-full h-full object-cover filter backdrop-blur-md bg-gray-900`}
+            {/* Background Video */}
+            <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
+                <video className= {`absolute top-0 left-0 w-full h-full object-cover`}
                     autoPlay loop muted>
                     <source src={bgVideo} type="video/mp4" />
                 </video>
