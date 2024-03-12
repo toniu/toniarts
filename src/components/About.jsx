@@ -39,7 +39,7 @@ const About = () => {
   return (
 
       <div
-        className='sticky overflow-hidden h-screen'
+        className='sticky overflow-hidden h-[120vh] md:h-screen'
         style={{
           backgroundImage: `url(${backgroundImage})`,
           backgroundSize: 'cover',
@@ -50,7 +50,7 @@ const About = () => {
           <div className='divs-container text-white block gap-x-0 gap-y-12 md:gap-x-12 md:gap-y-0'>
             <div
               id='section-a'
-              className='bg-black h-screen pt-20 bg-opacity-60 block md:flex justify-center items-center'
+              className='bg-black h-[120vh] md:h-screen pt-20 bg-opacity-60 block md:flex justify-center items-center'
             >
               <motion.p
                 ref={(element) => {

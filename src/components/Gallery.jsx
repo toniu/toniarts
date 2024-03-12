@@ -53,8 +53,8 @@ function ScrollCarousel({ children }) {
     useEffect(() => {
         if (elHeight !== 0) {
             const progress = Math.abs(scrollY) / elHeight;
-            const newIndex = Math.min(children.length - 1, Math.floor(progress * children.length));
-            setActiveIndex(newIndex);
+            const newIndex = Math.min(children.length, Math.max(1, Math.floor(progress * children.length)));
+            setActiveIndex(newIndex - 1);
         }
     }, [scrollY, elHeight, children.length]);
 
@@ -75,8 +75,8 @@ function ScrollCarousel({ children }) {
                 }}
             >
                 <div id='progress-tracker' className='block'>
-                    <motion.div className='p-1 rounded-xl bg-[#174135]' style={{ scaleX: scrollYProgress }} />  
-                    <span className='py-1 px-4 text-xl text-center md:text-2xl'>
+                    <motion.div className='p-1 rounded-full bg-[#174135]' style={{ scaleX: scrollYProgress }} />
+                    <span className='py-1 px-4 text-xl md:text-2xl'>
                         {activeIndex + 1}/{children.length}
                     </span>
                 </div>
@@ -91,7 +91,6 @@ function ScrollCarousel({ children }) {
         </div>
     );
 }
-
 
 
 const Gallery = () => {
@@ -123,7 +122,7 @@ const Gallery = () => {
                     <div key={index} className='box w-[50rem] md:w-[65rem]'>
                         <div className='pt-20 flex justify-center
                             hover:scale-110 transition 200 hover:cursor-zoom-in' onClick={() => handleImageClick(nextImage.imageUrl)}>
-                            <img className='w-[250px] h-4/5 rounded-lg object-cover object-center'
+                            <img className='w-[220px] h-4/5 rounded-lg object-cover object-center'
                                 src={nextImage.imageUrl} alt={nextImage.title} />
                             <div className='p-1 block'>
                                 <h2 className='px-3 py-3 text-xl md:text-4xl font-bold'>
@@ -133,7 +132,7 @@ const Gallery = () => {
                                 {/* Shadow title */}
                                 <span className='px-3 text-3xl md:text-7xl opacity-10'> {nextImage.title} </span>
                             </div>
-                            <img className='w-[160px] h-[210px] rounded-lg relative right-[12em] top-[19em]'
+                            <img className='w-[140px] h-[190px] rounded-lg relative right-[12em] top-[19em]'
                                 src={nextImage.compareUrl} alt='' />
                         </div>
                     </div>
