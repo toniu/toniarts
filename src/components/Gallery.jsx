@@ -116,23 +116,26 @@ const Gallery = () => {
     };
 
     return (
-        <div className='sticky-parent'>
+        <div id='gallery'
+        className='sticky-parent'>
             <ScrollCarousel>
                 {images.map((nextImage, index) => (
                     <div key={index} className='box w-[50rem] md:w-[65rem]'>
                         <div className='pt-20 flex justify-center
                             hover:scale-110 transition 200 hover:cursor-zoom-in' onClick={() => handleImageClick(nextImage.imageUrl)}>
-                            <img className='w-[220px] h-4/5 rounded-lg object-cover object-center'
-                                src={nextImage.imageUrl} alt={nextImage.title} />
+                            <img className='w-[190px] md:w-[220px] h-4/5 rounded-lg object-cover object-center'
+                                src={nextImage.imageUrl} alt={'IMG'} />
                             <div className='p-1 block'>
-                                <h2 className='px-3 py-3 text-xl md:text-4xl font-bold'>
+                                {/* Title and pronunciation */}
+                                <h2 className='px-3 py-3 text-lg md:text-4xl font-bold'>
                                     {nextImage.title} ("{nextImage.pronounce}")
                                 </h2>
-                                <h3 className='px-3 text-gray-800 text-xl md:text-2xl'>  {nextImage.description} </h3>
+                                {/* Description */}
+                                <h3 className='px-3 text-gray-800 text-lg md:text-2xl'>  {nextImage.description} </h3>
                                 {/* Shadow title */}
                                 <span className='px-3 text-3xl md:text-7xl opacity-10'> {nextImage.title} </span>
                             </div>
-                            <img className='w-[140px] h-[190px] rounded-lg relative right-[12em] top-[19em]'
+                            <img className='w-[130px] h-[160px] md:w-[140px] md:h-[180px] rounded-lg relative right-[16em] md:right-[12em] top-[17em] md:top-[19em]'
                                 src={nextImage.compareUrl} alt='' />
                         </div>
                     </div>

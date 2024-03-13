@@ -37,7 +37,8 @@ const Footer = () => {
     }, [isVisible, controls]);
 
     return (
-        <section className='h-screen flex justify-center items-center relative bg-black bg-opacity-60 footer-section'>
+        <section id='footer'
+        className='h-screen flex justify-center items-center relative bg-black bg-opacity-60 footer-section'>
             <div className='container  bg-opacity-40 flex flex-col justify-center items-center space-y-7'>
                 <motion.img 
                     className='w-[220px] h-[220px] object-cover rounded-lg hover:scale-110 cursor-pointer transition duration-100'

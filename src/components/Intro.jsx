@@ -36,7 +36,8 @@ const Intro = () => {
     };
 
     return (
-        <section className='h-screen flex justify-center items-center relative overflow-hidden'>
+        <section id='intro'
+        className='h-screen flex justify-center items-center relative overflow-hidden'>
             {/* Background Video */}
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
                 <video className= {`absolute top-0 left-0 w-full h-full object-cover`}
