@@ -41,7 +41,8 @@ const Intro = () => {
             {/* Background Video */}
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
                 <video className= {`absolute top-0 left-0 w-full h-full object-cover`}
-                    autoPlay loop muted>
+                    autoPlay loop muted
+                    style={{ 'pointer-events': 'none' }}>
                     <source src={bgVideo} type="video/mp4" />
                 </video>
             </div>
