@@ -1,22 +1,26 @@
 {
   "files": {
-    "main.css": "/toniarts/static/css/main.b6ef74a4.css",
-    "main.js": "/toniarts/static/js/main.fa078d49.js",
+    "main.css": "/toniarts/static/css/main.67b32cdb.css",
+    "main.js": "/toniarts/static/js/main.a56ee6d5.js",
     "static/js/453.8687493b.chunk.js": "/toniarts/static/js/453.8687493b.chunk.js",
     "static/media/pic-1.jpg": "/toniarts/static/media/pic-1.b5a9cff0acaf321f5755.jpg",
     "static/media/wood-background.jpg": "/toniarts/static/media/wood-background.8e1757f3bab4e8c30f82.jpg",
     "static/media/pic-6.jpg": "/toniarts/static/media/pic-6.37e2d9570e2a00196e33.jpg",
     "static/media/pic-8.jpg": "/toniarts/static/media/pic-8.140aa82e4839ef724f83.jpg",
     "static/media/pic-5.jpg": "/toniarts/static/media/pic-5.603436d73677469b496b.jpg",
-    "static/media/intro-video.mp4": "/toniarts/static/media/intro-video.6d9791895c6883887b38.mp4",
     "static/media/pic-7.jpg": "/toniarts/static/media/pic-7.553ef2882ea5dbc5be7f.jpg",
     "static/media/pic-3.jpg": "/toniarts/static/media/pic-3.151d87e8f676619d8b5b.jpg",
     "static/media/pic-4.jpg": "/toniarts/static/media/pic-4.3ac3e6f3487c38b5df9f.jpg",
     "static/media/cp-6.jpg": "/toniarts/static/media/cp-6.1b4f01405a8e254826c4.jpg",
     "static/media/yute-artist.png": "/toniarts/static/media/yute-artist.40c1c9c60a3cc5528e5c.png",
+    "static/media/ts-3.png": "/toniarts/static/media/ts-3.f25980b5caef88be7141.png",
+    "static/media/ts-4.png": "/toniarts/static/media/ts-4.9a1ade66848f5fded290.png",
+    "static/media/ts-1.png": "/toniarts/static/media/ts-1.9439a60e333d871a57a8.png",
     "static/media/cp-8.jpg": "/toniarts/static/media/cp-8.2878a5b10a55f9ea727f.jpg",
     "static/media/pic-2.jpg": "/toniarts/static/media/pic-2.58105892c1e2a8b9b38f.jpg",
     "static/media/ta-homepics.png": "/toniarts/static/media/ta-homepics.742afa1573529487cb83.png",
+    "static/media/ts-2.png": "/toniarts/static/media/ts-2.90369fab7e89a1aeae3d.png",
+    "static/media/ts-5.png": "/toniarts/static/media/ts-5.e1b1d4f891a391134f50.png",
     "static/media/cp-1.jpg": "/toniarts/static/media/cp-1.d46ca812b6d1844c2975.jpg",
     "static/media/cp-2.jpg": "/toniarts/static/media/cp-2.3ec53a35f88582601324.jpg",
     "static/media/cp-4.jpg": "/toniarts/static/media/cp-4.5accd92517784016183a.jpg",
@@ -25,12 +29,12 @@
     "static/media/cp-3.jpg": "/toniarts/static/media/cp-3.f7374546cd5010d59fd6.jpg",
     "static/media/cp-5.jpg": "/toniarts/static/media/cp-5.c9cc3fccdbaee0a8a9e3.jpg",
     "index.html": "/toniarts/index.html",
-    "main.b6ef74a4.css.map": "/toniarts/static/css/main.b6ef74a4.css.map",
-    "main.fa078d49.js.map": "/toniarts/static/js/main.fa078d49.js.map",
+    "main.67b32cdb.css.map": "/toniarts/static/css/main.67b32cdb.css.map",
+    "main.a56ee6d5.js.map": "/toniarts/static/js/main.a56ee6d5.js.map",
     "453.8687493b.chunk.js.map": "/toniarts/static/js/453.8687493b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b6ef74a4.css",
-    "static/js/main.fa078d49.js"
+    "static/css/main.67b32cdb.css",
+    "static/js/main.a56ee6d5.js"
   ]
 }
