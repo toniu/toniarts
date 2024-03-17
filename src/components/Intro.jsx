@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
-import TS1 from '../assets/ts-1.png'
-import TS2 from '../assets/ts-2.png'
-import TS3 from '../assets/ts-3.png'
-import TS4 from '../assets/ts-4.png'
-import TS5 from '../assets/ts-5.png'
+import TS1 from '../assets/tsr-1.png'
+import TS2 from '../assets/tsr-2.png'
+import TS3 from '../assets/tsr-3.png'
+import TS4 from '../assets/tsr-4.png'
+import TS5 from '../assets/tsr-5.png'
 import { useInView } from 'react-intersection-observer';
 import { motion, useAnimation } from 'framer-motion';
 
@@ -64,12 +64,12 @@ const Intro = () => {
                 key={index}
                 src={image.src}
                 alt={image.alt}
-                className='opacity-30 px-1 w-1/3 md:w-1/5 h-[120vh] md:h-[140vh]'
+                className={`px-2 w-[30%] md:w-[20%] h-[140vh] md:h-auto ${index % 2 === 0 ? 'opacity-20' : 'opacity-15'}`}
                 initial={false}
                 animate={
                   index % 2 === 0
                     ? { y: scrollY * -0.3 }
-                    : { y: scrollY * 0.3 - (window.innerHeight * 0.15) } // Adjust the offset based on window height
+                    : { y: scrollY * 0.3 - (50)} // Adjust the offset based on window height
                 }
                 variants={variants}
                 transition={{ ease: 'linear' }}
