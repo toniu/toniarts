@@ -13,7 +13,7 @@ import { FaUpDown } from "react-icons/fa6";
 const ScrollMsg = ({ message }) => {
   return (
     <motion.div
-      className="fixed bottom-5 left-1/2 transform -translate-x-1/2 py-2 px-5 bg-black bg-opacity-75 text-white rounded-full"
+      className="fixed bottom-5 left-1/2 transform -translate-x-1/2 py-2 px-8 bg-black bg-opacity-75 text-white rounded-full"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
