@@ -145,7 +145,7 @@ const Gallery = () => {
             {/* Overlay */}
             {overlayImage && (
                 <motion.div
-                    className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-75 flex items-center justify-center
+                    className="z-20 fixed overflow-y-hidden top-0 left-0 w-full h-full bg-black bg-opacity-75 flex items-center justify-center
                     hover:cursor-zoom-out"
                     onClick={() => setOverlayImage(null)}
                     initial={{ opacity: 0 }}
@@ -153,7 +153,7 @@ const Gallery = () => {
                     exit={{ opacity: 0 }}
                 >
                     <motion.img
-                        className="max-h-[90vh] max-w-[90vw] "
+                        className="z-10 max-h-[90vh] max-w-[90vw] "
                         src={overlayImage}
                         alt="Overlay Image"
                         initial={{ scale: 0 }}

@@ -8,6 +8,7 @@ import Gallery from "./components/Gallery.jsx";
 import Footer from "./components/Footer.jsx";
 
 import { BsMouseFill } from "react-icons/bs";
+import { FaUpDown } from "react-icons/fa6";
 
 const ScrollMsg = ({ message }) => {
   return (
@@ -17,9 +18,10 @@ const ScrollMsg = ({ message }) => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <div className="flex gap-x-3 select-none">
+      <div className="flex gap-x-2 select-none">
         <BsMouseFill className="text-2xl" />
         {message}
+        <FaUpDown className="text-2xl font-light"/>
       </div>
     </motion.div>
   );
@@ -27,6 +29,7 @@ const ScrollMsg = ({ message }) => {
 
 function App() {
   const [showScrollMsg, setShowScrollMsg] = useState(false);
+  const [scrollString, setScrollString] = useState('use scroll')
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,7 +40,16 @@ function App() {
       const msgIntroSection = scrollPosition < (acComponent.offsetTop * 0.2);
       const msgAboutSection = (scrollPosition > (acComponent.offsetTop * 0.875)) && (scrollPosition < (acComponent.offsetTop * 1.5));
 
-      setShowScrollMsg(msgIntroSection || msgAboutSection );
+      if (msgIntroSection) {
+        setScrollString('use scroll')
+        setShowScrollMsg(true);
+      }
+      else if (msgAboutSection) {
+        setScrollString('scroll this way')
+        setShowScrollMsg(true);
+      } else {
+        setShowScrollMsg(false);
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -53,7 +65,7 @@ function App() {
         <About />
         <Gallery />
         <Footer />
-        {showScrollMsg && <ScrollMsg message="scroll down" />}
+        {showScrollMsg && <ScrollMsg message={scrollString} />}
       </main>
     </div>
   );
