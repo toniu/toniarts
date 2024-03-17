@@ -20,8 +20,8 @@ const ScrollMsg = ({ message }) => {
     >
       <div className="flex w-auto gap-x-2 select-none ">
         <BsMouseFill className="text-xl md:text-2xl" />
-        <span className='text-sm md:text-base'>{message} </span>
-        <FaUpDown className="text-xl md:text-2xl font-light"/>
+        <span className="text-sm md:text-base">{message}</span>
+        <FaUpDown className="text-xl md:text-2xl font-light" />
       </div>
     </motion.div>
   );
@@ -29,27 +29,21 @@ const ScrollMsg = ({ message }) => {
 
 function App() {
   const [showScrollMsg, setShowScrollMsg] = useState(false);
-  const [scrollString, setScrollString] = useState('use scroll')
+  const [scrollString, setScrollString] = useState("use scroll");
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
-      const acComponent = document.getElementById('about');
+      const acComponent = document.getElementById("about");
 
       /* The message should only show if the scroll position falls in any of these regions */
-      const msgIntroSection = scrollPosition < (acComponent.offsetTop * 0.2);
-      const msgAboutSection = (scrollPosition > (acComponent.offsetTop * 0.875)) && (scrollPosition < (acComponent.offsetTop * 1.5));
+      const msgIntroSection = scrollPosition < acComponent.offsetTop * 0.2;
+      const msgAboutSection =
+        scrollPosition > acComponent.offsetTop * 0.875 &&
+        scrollPosition < acComponent.offsetTop * 1.5;
 
-      if (msgIntroSection) {
-        setScrollString('use scroll')
-        setShowScrollMsg(true);
-      }
-      else if (msgAboutSection) {
-        setScrollString('scroll this way')
-        setShowScrollMsg(true);
-      } else {
-        setShowScrollMsg(false);
-      }
+      setScrollString("use scroll");
+      setShowScrollMsg(msgIntroSection || msgAboutSection);
     };
 
     window.addEventListener("scroll", handleScroll);
