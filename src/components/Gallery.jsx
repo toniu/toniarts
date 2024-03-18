@@ -5,23 +5,23 @@ import useScrollWidth from './utils/useScrollWidth';
 
 /* Images */
 import galleryBackground from '../assets/draw-background.png';
-import P1 from '../assets/pic-1.jpg';
-import P2 from '../assets/pic-2.jpg';
-import P3 from '../assets/pic-3.jpg';
-import P4 from '../assets/pic-4.jpg';
-import P5 from '../assets/pic-5.jpg';
-import P6 from '../assets/pic-6.jpg';
-import P7 from '../assets/pic-7.jpg';
-import P8 from '../assets/pic-8.jpg';
+import P1 from '../assets/drawings/pic-1.jpg';
+import P2 from '../assets/drawings/pic-2.jpg';
+import P3 from '../assets/drawings/pic-3.jpg';
+import P4 from '../assets/drawings/pic-4.jpg';
+import P5 from '../assets/drawings/pic-5.jpg';
+import P6 from '../assets/drawings/pic-6.jpg';
+import P7 from '../assets/drawings/pic-7.jpg';
+import P8 from '../assets/drawings/pic-8.jpg';
 
-import CP1 from '../assets/cp-1.jpg';
-import CP2 from '../assets/cp-2.jpg';
-import CP3 from '../assets/cp-3.jpg';
-import CP4 from '../assets/cp-4.jpg';
-import CP5 from '../assets/cp-5.jpg';
-import CP6 from '../assets/cp-6.jpg';
-import CP7 from '../assets/cp-7.jpg';
-import CP8 from '../assets/cp-8.jpg';
+import CP1 from '../assets/cp/cp-1.jpg';
+import CP2 from '../assets/cp/cp-2.jpg';
+import CP3 from '../assets/cp/cp-3.jpg';
+import CP4 from '../assets/cp/cp-4.jpg';
+import CP5 from '../assets/cp/cp-5.jpg';
+import CP6 from '../assets/cp/cp-6.jpg';
+import CP7 from '../assets/cp/cp-7.jpg';
+import CP8 from '../assets/cp/cp-8.jpg';
 
 function ScrollCarousel({ children }) {
     const refHeight = useRef(null);
@@ -102,7 +102,7 @@ const Gallery = () => {
         { title: 'dré.', pronounce: 'dreh', description: 'warrior', imageUrl: P3, compareUrl: CP3 },
         { title: 'samuel.', pronounce: 'sah-mu-ell', description: 'God has heard', imageUrl: P7, compareUrl: CP7 },
         { title: 'jabu.', pronounce: 'jah-bu', description: 'rejoice', imageUrl: P4, compareUrl: CP4 },
-        { title: 'grace.', pronounce: 'ɡreɪs', description: 'favour and blessing', imageUrl: P6, compareUrl: CP6 },
+        { title: 'grandma grace.', pronounce: 'ɡreɪs', description: 'favour and blessing', imageUrl: P6, compareUrl: CP6 },
     ];
 
     const [overlayImage, setOverlayImage] = useState(null);
@@ -123,7 +123,7 @@ const Gallery = () => {
                     <div key={index} className='box w-[50rem] md:w-[65rem]'>
                         <div className='pt-20 flex justify-center
                             hover:scale-110 transition 200 hover:cursor-zoom-in' onClick={() => handleImageClick(nextImage.imageUrl)}>
-                            <img className='w-[190px] md:w-[220px] h-4/5 rounded-lg object-cover object-center'
+                            <img className='w-[170px] md:w-[220px] h-4/5 rounded-lg object-cover object-center'
                                 src={nextImage.imageUrl} alt={'IMG'} />
                             <div className='p-1 block'>
                                 {/* Title and pronunciation */}
@@ -135,7 +135,7 @@ const Gallery = () => {
                                 {/* Shadow title */}
                                 <span className='px-3 text-3xl md:text-7xl opacity-10'> {nextImage.title} </span>
                             </div>
-                            <img className='w-[130px] h-[160px] md:w-[140px] md:h-[180px] rounded-lg relative right-[16em] md:right-[12em] top-[17em] md:top-[19em]'
+                            <img className='w-[100px] h-[130px] md:w-[140px] md:h-[170px] rounded-lg relative right-[16em] md:right-[12em] top-[17em] md:top-[19em]'
                                 src={nextImage.compareUrl} alt='' />
                         </div>
                     </div>

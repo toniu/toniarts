@@ -57,7 +57,7 @@ const About = () => {
                   ref(element);
                   elementRef.current = element;
                 }}
-                className='p-1 text-white text-sm md:text-base w-[70%] text-center mx-auto'
+                className='p-1 text-white text-sm md:text-base w-[85%] text-center mx-auto'
                 initial='hidden'
                 animate={{
                   opacity: 1,
@@ -91,7 +91,7 @@ const About = () => {
                   ref(element);
                   elementRef.current = element;
                 }}
-                className='p-1 text-white text-sm md:text-base w-[70%] text-center mx-auto'
+                className='p-1 text-white text-sm md:text-base w-[85%] text-center mx-auto'
                 initial='hidden'
                 animate={{
                   opacity: 1,
@@ -103,7 +103,7 @@ const About = () => {
                 God-given gift for art and drawing for many years.The product of drawing
                 is where I see visions come to life, it is also where I feel most at peace.
                 Who knew a pencil, a paper, a hand and bumping some good Neo soul in the
-                background could go somewhere. 
+                background could go somewhere. More drawings to come later...
               </motion.p>
             </div>
           </div>

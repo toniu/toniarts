@@ -2,7 +2,7 @@
 A visually appealing website which shows a gallery of my drawings exploring the beauty and depth of the Black diaspora; from fashion, to sports, to music and even family. The website was developed using React (including their libraries for cool scrolling and transition features) and TailwindCSS.
 
 ### Introduction and about page
-The main intention of this project was to combine the talents of front-end design and drawing. In the introduction of the page, I bring a visually appealing video background, minimalistic title features and smooth transitions to introduce the user.
+The main intention of this project was to combine the talents of front-end design and drawing. In the introduction of the page, I bring a visually appealing parallax scroll animation, minimalistic title features and smooth transitions to introduce the user.
 ![home](screenshots/intro.png)
 ![about](screenshots/about.png)
 

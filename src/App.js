@@ -28,7 +28,7 @@ const ScrollMsg = ({ message }) => {
 };
 
 function App() {
-  const [showScrollMsg, setShowScrollMsg] = useState(false);
+  const [showScrollMsg, setShowScrollMsg] = useState(true);
   const [scrollString, setScrollString] = useState("use scroll");
 
   useEffect(() => {
@@ -59,7 +59,13 @@ function App() {
         <About />
         <Gallery />
         <Footer />
-        {showScrollMsg && <ScrollMsg message={scrollString} />}
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2.25 }}>
+          {showScrollMsg && <ScrollMsg message={scrollString} />}
+        </motion.div>
       </main>
     </div>
   );

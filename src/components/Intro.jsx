@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
-import TS1 from '../assets/tsr-1.png'
-import TS2 from '../assets/tsr-2.png'
-import TS3 from '../assets/tsr-3.png'
-import TS4 from '../assets/tsr-4.png'
-import TS5 from '../assets/tsr-5.png'
+import TS1 from '../assets/strips/tsr-1.png'
+import TS2 from '../assets/strips/tsr-2.png'
+import TS3 from '../assets/strips/tsr-3.png'
+import TS4 from '../assets/strips/tsr-4.png'
+import TS5 from '../assets/strips/tsr-5.png'
 import { useInView } from 'react-intersection-observer';
 import { motion, useAnimation } from 'framer-motion';
 
@@ -58,13 +58,16 @@ const Intro = () => {
       {/* Background Scroll */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
         <div className={`absolute top-0 left-0 w-full h-full object-cover`}>
-          <div className='flex'>
+          <motion.div className='flex'
+          initial={{ opacity: 1, y: 0, scale: 3, rotate: -340, x: -150, backgroundColor: "#052e16" }}
+          animate={{ opacity: 0.2, y: -10, scale: 1, rotate: 0, x: 0, backgroundColor: "#ffffff" }}
+          transition={{ duration: 1.5, delay: 0.5 }}>
             {imageStrips.map((image, index) => (
               <motion.img
                 key={index}
                 src={image.src}
                 alt={image.alt}
-                className={`px-2 w-[30%] md:w-[20%] h-[140vh] md:h-auto ${index % 2 === 0 ? 'opacity-20' : 'opacity-15'}`}
+                className={`px-2 w-[30%] md:w-[20%] h-[140vh] md:h-auto`}
                 initial={false}
                 animate={
                   index % 2 === 0
@@ -75,12 +78,15 @@ const Intro = () => {
                 transition={{ ease: 'linear' }}
               />
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
 
       {/* Content */}
-      <div className='relative container z-10 text-center'>
+      <motion.div className='relative container z-10 text-center'
+      initial={{ opacity: 0, y: 0 }}
+      animate={{ opacity: 1, y: -10 }}
+      transition={{ duration: 0.75, delay: 1.5 }}>
         <motion.h1
           ref={(element) => {
             ref(element);
@@ -107,7 +113,7 @@ const Intro = () => {
           className='text-lg md:text-2xl text-[#174135] font-bold'>
           a visual gallery of my drawings
         </motion.h3>
-      </div>
+      </motion.div>
     </section>
   );
 };
