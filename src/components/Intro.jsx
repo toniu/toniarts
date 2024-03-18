@@ -59,15 +59,15 @@ const Intro = () => {
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
         <div className={`absolute top-0 left-0 w-full h-full object-cover`}>
           <motion.div className='flex'
-          initial={{ opacity: 1, y: 0, scale: 3, rotate: -340, x: -150, backgroundColor: "#052e16" }}
+          initial={{ opacity: 1, y: 0, scale: 3, rotate: -40, x: -150, backgroundColor: "#052e16" }}
           animate={{ opacity: 0.2, y: -10, scale: 1, rotate: 0, x: 0, backgroundColor: "#ffffff" }}
-          transition={{ duration: 1.5, delay: 0.5 }}>
+          transition={{ duration: 3, delay: 0.5 }}>
             {imageStrips.map((image, index) => (
               <motion.img
                 key={index}
                 src={image.src}
                 alt={image.alt}
-                className={`px-2 w-[30%] md:w-[20%] h-[140vh] md:h-auto`}
+                className={`px-2 w-[50%] md:w-[20%] h-[135vh] md:h-auto`}
                 initial={false}
                 animate={
                   index % 2 === 0
