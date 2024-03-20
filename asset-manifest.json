@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/toniarts/static/css/main.d9c5f83a.css",
-    "main.js": "/toniarts/static/js/main.704785e0.js",
+    "main.css": "/toniarts/static/css/main.4a6f755e.css",
+    "main.js": "/toniarts/static/js/main.5ac02288.js",
     "static/js/453.8687493b.chunk.js": "/toniarts/static/js/453.8687493b.chunk.js",
     "static/media/pic-1.jpg": "/toniarts/static/media/pic-1.b5a9cff0acaf321f5755.jpg",
     "static/media/wood-background.jpg": "/toniarts/static/media/wood-background.8e1757f3bab4e8c30f82.jpg",
@@ -29,12 +29,12 @@
     "static/media/cp-3.jpg": "/toniarts/static/media/cp-3.f7374546cd5010d59fd6.jpg",
     "static/media/cp-5.jpg": "/toniarts/static/media/cp-5.c9cc3fccdbaee0a8a9e3.jpg",
     "index.html": "/toniarts/index.html",
-    "main.d9c5f83a.css.map": "/toniarts/static/css/main.d9c5f83a.css.map",
-    "main.704785e0.js.map": "/toniarts/static/js/main.704785e0.js.map",
+    "main.4a6f755e.css.map": "/toniarts/static/css/main.4a6f755e.css.map",
+    "main.5ac02288.js.map": "/toniarts/static/js/main.5ac02288.js.map",
     "453.8687493b.chunk.js.map": "/toniarts/static/js/453.8687493b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d9c5f83a.css",
-    "static/js/main.704785e0.js"
+    "static/css/main.4a6f755e.css",
+    "static/js/main.5ac02288.js"
   ]
 }
