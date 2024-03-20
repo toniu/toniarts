@@ -57,7 +57,7 @@ const About = () => {
                   ref(element);
                   elementRef.current = element;
                 }}
-                className='p-1 text-white text-sm md:text-base w-[85%] text-center mx-auto'
+                className='p-1 text-white text-sm md:text-base w-[95%] text-center mx-auto'
                 initial='hidden'
                 animate={{
                   opacity: 1,
@@ -91,7 +91,7 @@ const About = () => {
                   ref(element);
                   elementRef.current = element;
                 }}
-                className='p-1 text-white text-sm md:text-base w-[85%] text-center mx-auto'
+                className='p-1 text-white text-sm md:text-base w-[95%] text-center mx-auto'
                 initial='hidden'
                 animate={{
                   opacity: 1,
