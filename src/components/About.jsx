@@ -81,7 +81,7 @@ const About = () => {
                 <h3 className='p-2 m-2 text-white w-[500px] md:w-[600px]'> the <span className='text-[#81E5A5]'> toniarts. </span> visual gallery is a page that displays portrait drawings from the self-taught Nigerian artist, <span className='text-[#81E5A5]'> toni. </span> These drawings will be portraits which explore the beauty of people in the African and Caribbean mainland and diaspora. This artwork is inspired by a mixture of people, with some people coming from different walks of <span className='text-[#81E5A5]'> music, film, sports, fashion, family </span> and other forms of creativity and intelligence</h3>
                 <h4 className='p-2 m-2 text-white w-[500px] md:w-[600px]'> I gotta <span className='text-[#81E5A5]'> re-ignite </span> my gifts it's been too long. <span className='text-[#81E5A5]'> <br />love to my peopledem. </span> </h4>
               </div>
-              <motion.img id='phones' className='py-3 px-12 mx-auto w-auto h-[480px] md:h-[700px]' src={phones} alt='phones' animate={controls} />
+              <motion.img id='phones' className='py-3 px-12 mx-auto w-auto h-[400px] md:h-[650px]' src={phones} alt='phones' animate={controls} />
             </div>
           </div>
 
