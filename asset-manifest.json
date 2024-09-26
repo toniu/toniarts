@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/toniarts/static/css/main.4a6f755e.css",
-    "main.js": "/toniarts/static/js/main.5ac02288.js",
+    "main.css": "/toniarts/static/css/main.e7444cd9.css",
+    "main.js": "/toniarts/static/js/main.611cd071.js",
     "static/js/453.8687493b.chunk.js": "/toniarts/static/js/453.8687493b.chunk.js",
     "static/media/pic-1.jpg": "/toniarts/static/media/pic-1.b5a9cff0acaf321f5755.jpg",
-    "static/media/wood-background.jpg": "/toniarts/static/media/wood-background.8e1757f3bab4e8c30f82.jpg",
     "static/media/pic-6.jpg": "/toniarts/static/media/pic-6.37e2d9570e2a00196e33.jpg",
     "static/media/pic-8.jpg": "/toniarts/static/media/pic-8.140aa82e4839ef724f83.jpg",
     "static/media/pic-5.jpg": "/toniarts/static/media/pic-5.603436d73677469b496b.jpg",
+    "static/media/toni-backgroundlgs.png": "/toniarts/static/media/toni-backgroundlgs.d093d85d35e70ce34a81.png",
     "static/media/pic-7.jpg": "/toniarts/static/media/pic-7.553ef2882ea5dbc5be7f.jpg",
     "static/media/tsr-3.png": "/toniarts/static/media/tsr-3.0524127042fab4cad2b1.png",
     "static/media/tsr-4.png": "/toniarts/static/media/tsr-4.abca7397bedf7b2c5a50.png",
@@ -20,21 +20,22 @@
     "static/media/yute-artist.png": "/toniarts/static/media/yute-artist.40c1c9c60a3cc5528e5c.png",
     "static/media/cp-8.jpg": "/toniarts/static/media/cp-8.2878a5b10a55f9ea727f.jpg",
     "static/media/pic-2.jpg": "/toniarts/static/media/pic-2.58105892c1e2a8b9b38f.jpg",
-    "static/media/ta-homepics.png": "/toniarts/static/media/ta-homepics.742afa1573529487cb83.png",
+    "static/media/ta-about-phones.png": "/toniarts/static/media/ta-about-phones.2288697852436e951dda.png",
     "static/media/cp-1.jpg": "/toniarts/static/media/cp-1.d46ca812b6d1844c2975.jpg",
     "static/media/cp-2.jpg": "/toniarts/static/media/cp-2.3ec53a35f88582601324.jpg",
     "static/media/cp-4.jpg": "/toniarts/static/media/cp-4.5accd92517784016183a.jpg",
-    "static/media/draw-background.png": "/toniarts/static/media/draw-background.0c2e63b90b11c1efd30d.png",
     "static/media/cp-7.jpg": "/toniarts/static/media/cp-7.45eb8244bc626176e928.jpg",
     "static/media/cp-3.jpg": "/toniarts/static/media/cp-3.f7374546cd5010d59fd6.jpg",
     "static/media/cp-5.jpg": "/toniarts/static/media/cp-5.c9cc3fccdbaee0a8a9e3.jpg",
+    "static/media/artist-moi.png": "/toniarts/static/media/artist-moi.d3dd37eda40edd69781f.png",
+    "static/media/prodigy-background-ta.jpg": "/toniarts/static/media/prodigy-background-ta.6864bf81a147c19670a4.jpg",
     "index.html": "/toniarts/index.html",
-    "main.4a6f755e.css.map": "/toniarts/static/css/main.4a6f755e.css.map",
-    "main.5ac02288.js.map": "/toniarts/static/js/main.5ac02288.js.map",
+    "main.e7444cd9.css.map": "/toniarts/static/css/main.e7444cd9.css.map",
+    "main.611cd071.js.map": "/toniarts/static/js/main.611cd071.js.map",
     "453.8687493b.chunk.js.map": "/toniarts/static/js/453.8687493b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4a6f755e.css",
-    "static/js/main.5ac02288.js"
+    "static/css/main.e7444cd9.css",
+    "static/js/main.611cd071.js"
   ]
 }
