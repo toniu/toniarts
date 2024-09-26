@@ -8,20 +8,19 @@ import Gallery from "./components/Gallery.jsx";
 import Footer from "./components/Footer.jsx";
 
 import { BsMouseFill } from "react-icons/bs";
-import { FaUpDown } from "react-icons/fa6";
 
 const ScrollMsg = ({ message }) => {
   return (
     <motion.div
-      className="fixed bottom-5 left-1/2 transform -translate-x-1/2 py-2 px-6 bg-black bg-opacity-75 text-white rounded-full"
+      className="fixed bottom-5 left-1/2 transform -translate-x-1/2 py-2 px-6 bg-black bg-opacity-75 text-green-300 rounded-full"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
+      transition={{ duration: 0.75 }}
     >
       <div className="flex w-auto gap-x-2 select-none ">
-        <BsMouseFill className="text-xl md:text-2xl" />
-        <span className="text-sm md:text-base">{message}</span>
-        <FaUpDown className="text-xl md:text-2xl font-light" />
+        <BsMouseFill className="text-2xl md:text-3xl" />
+        <span className="text-lg md:text-xl">{message}</span>
       </div>
     </motion.div>
   );
@@ -39,8 +38,8 @@ function App() {
       /* The message should only show if the scroll position falls in any of these regions */
       const msgIntroSection = scrollPosition < acComponent.offsetTop * 0.2;
       const msgAboutSection =
-        scrollPosition > acComponent.offsetTop * 0.875 &&
-        scrollPosition < acComponent.offsetTop * 1.5;
+        scrollPosition > acComponent.offsetTop * 1.75 &&
+        scrollPosition < acComponent.offsetTop * 2.25;
 
       setScrollString("use scroll");
       setShowScrollMsg(msgIntroSection || msgAboutSection);

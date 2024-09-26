@@ -59,15 +59,15 @@ const Intro = () => {
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
         <div className={`absolute top-0 left-0 w-full h-full object-cover`}>
           <motion.div className='flex'
-          initial={{ opacity: 1, y: 0, scale: 3, rotate: -40, x: -150, backgroundColor: "#052e16" }}
-          animate={{ opacity: 0.2, y: -10, scale: 1, rotate: 0, x: 0, backgroundColor: "#ffffff" }}
+          initial={{ opacity: 0.75, y: 0, scale: 3, rotate: -40, x: -150, backgroundColor: "#4D8962" }}
+          animate={{ opacity: 1, y: -10, scale: 1, rotate: 0, x: 0, backgroundColor: "#141414" }}
           transition={{ duration: 3, delay: 0.5 }}>
             {imageStrips.map((image, index) => (
               <motion.img
                 key={index}
                 src={image.src}
                 alt={image.alt}
-                className={`px-2 w-[50%] md:w-[20%] h-[135vh] md:h-auto`}
+                className={`px-2 w-[50%] md:w-[20%] h-[135vh] md:h-auto opacity-5`}
                 initial={false}
                 animate={
                   index % 2 === 0
@@ -97,8 +97,8 @@ const Intro = () => {
             opacity: 1,
             y: calculatePosition(elementRef.current) * 110,
           }}
-          className='text-6xl md:text-8xl text-[#362218] font-bold'>
-          toniarts.
+          className='text-6xl md:text-8xl text-[#81E5A5] font-normal'>
+          toni<span className='text-white'>arts.</span>
         </motion.h1>
         <motion.h3
           ref={(element) => {
@@ -110,7 +110,7 @@ const Intro = () => {
             opacity: 1,
             y: calculatePosition(elementRef.current) * 110,
           }}
-          className='text-lg md:text-2xl text-[#174135] font-bold'>
+          className='text-lg md:text-2xl text-white font-light'>
           a visual gallery of my drawings
         </motion.h3>
       </motion.div>

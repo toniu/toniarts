@@ -4,24 +4,7 @@ import useWindowScroll from '@react-hook/window-scroll';
 import useScrollWidth from './utils/useScrollWidth';
 
 /* Images */
-import galleryBackground from '../assets/draw-background.png';
-import P1 from '../assets/drawings/pic-1.jpg';
-import P2 from '../assets/drawings/pic-2.jpg';
-import P3 from '../assets/drawings/pic-3.jpg';
-import P4 from '../assets/drawings/pic-4.jpg';
-import P5 from '../assets/drawings/pic-5.jpg';
-import P6 from '../assets/drawings/pic-6.jpg';
-import P7 from '../assets/drawings/pic-7.jpg';
-import P8 from '../assets/drawings/pic-8.jpg';
-
-import CP1 from '../assets/cp/cp-1.jpg';
-import CP2 from '../assets/cp/cp-2.jpg';
-import CP3 from '../assets/cp/cp-3.jpg';
-import CP4 from '../assets/cp/cp-4.jpg';
-import CP5 from '../assets/cp/cp-5.jpg';
-import CP6 from '../assets/cp/cp-6.jpg';
-import CP7 from '../assets/cp/cp-7.jpg';
-import CP8 from '../assets/cp/cp-8.jpg';
+import galleryData from './constants/galleryData';
 
 function ScrollCarousel({ children }) {
     const refHeight = useRef(null);
@@ -67,17 +50,28 @@ function ScrollCarousel({ children }) {
             style={{ height: elHeight }}
         >
             <div
-                className="sticky-box bg-white"
+                className="sticky-box"
                 style={{
-                    backgroundImage: `url(${galleryBackground})`,
+                    backgroundImage: `url(${galleryData[activeIndex].compareUrl})`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                 }}
             >
-                <div id='progress-tracker' className='block'>
-                    <motion.div className='p-1 rounded-full bg-[#174135]' style={{ scaleX: scrollYProgress }} />
+                <div
+                    className="overlay backdrop-blur-sm" // Add overlay class
+                    style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100%',
+                        backgroundColor: 'rgba(0, 0, 0, 0.85)', // Adjust opacity here
+                    }}
+                ></div>
+                <div id='progress-tracker' className='block text-white backdrop-blur-none'>
+                    <motion.div className='p-1 rounded-full bg-[#81E5A5]' style={{ scaleX: scrollYProgress }} />
                     <span className='py-1 px-4 text-xl md:text-2xl'>
-                        {activeIndex + 1}/{children.length}
+                        <span className='text-[#81E5A5]'> {activeIndex + 1} </span> | {children.length}
                     </span>
                 </div>
                 <div
@@ -89,21 +83,12 @@ function ScrollCarousel({ children }) {
                 </div>
             </div>
         </div>
+
     );
 }
 
 
 const Gallery = () => {
-    const images = [
-        { title: 'iwobi.', pronounce: 'ih-woh-bee', description: 'a courageous heart', imageUrl: P8, compareUrl: CP8 },
-        { title: 'jo-vaughn.', pronounce: 'jo-ahn', description: 'God is gracious', imageUrl: P1, compareUrl: CP1 },
-        { title: 'memphis.', pronounce: 'mɛm-fɪs', description: 'enduring beauty', imageUrl: P5, compareUrl: CP5 },
-        { title: 'adut.', pronounce: 'ə-duut', description: 'complete and powerful', imageUrl: P2, compareUrl: CP2 },
-        { title: 'dré.', pronounce: 'dreh', description: 'warrior', imageUrl: P3, compareUrl: CP3 },
-        { title: 'samuel.', pronounce: 'sah-mu-ell', description: 'God has heard', imageUrl: P7, compareUrl: CP7 },
-        { title: 'jabu.', pronounce: 'jah-bu', description: 'rejoice', imageUrl: P4, compareUrl: CP4 },
-        { title: 'grandma grace.', pronounce: 'ɡreɪs', description: 'favour and blessing', imageUrl: P6, compareUrl: CP6 },
-    ];
 
     const [overlayImage, setOverlayImage] = useState(null);
 
@@ -117,26 +102,32 @@ const Gallery = () => {
 
     return (
         <div id='gallery'
-        className='sticky-parent'>
+            className='sticky-parent'>
             <ScrollCarousel>
-                {images.map((nextImage, index) => (
+                {galleryData.map((nextImage, index) => (
                     <div key={index} className='box w-[50rem] md:w-[65rem]'>
                         <div className='pt-20 flex justify-center
                             hover:scale-110 transition 200 hover:cursor-zoom-in' onClick={() => handleImageClick(nextImage.imageUrl)}>
-                            <img className='w-[170px] md:w-[220px] h-4/5 rounded-lg object-cover object-center'
-                                src={nextImage.imageUrl} alt={'IMG'} />
-                            <div className='p-1 block'>
+                            <div>
+                                <img className='w-[170px] h-1/2 object-cover object-center'
+                                    src={nextImage.imageUrl} alt={'IMG'} />
+                                <img className='w-[170px]  h-1/2 relative'
+                                    src={nextImage.compareUrl} alt={'COMPAREIMG'} />
+                            </div>
+                            <div className='p-1 block text-white'>
                                 {/* Title and pronunciation */}
-                                <h2 className='px-3 py-3 text-lg md:text-4xl font-bold'>
-                                    {nextImage.title} ("{nextImage.pronounce}")
+                                <h2 className='px-3 py-1 text-lg md:text-2xl font-normal'>
+                                    {nextImage.title}
+                                </h2>
+                                <h2 className='px-3 py-1 text-lg md:text-2xl font-normal'>
+                                    ("{nextImage.pronounce}")
                                 </h2>
                                 {/* Description */}
-                                <h3 className='px-3 text-gray-800 text-lg md:text-2xl'>  {nextImage.description} </h3>
+                                <h3 className='px-3 text-[#81E5A5] text-xl md:text-3xl'>  {nextImage.description} </h3>
                                 {/* Shadow title */}
-                                <span className='px-3 text-3xl md:text-7xl opacity-10'> {nextImage.title} </span>
+                                <span className='px-3 text-4xl md:text-5xl opacity-10'> {nextImage.title} </span>
                             </div>
-                            <img className='w-[100px] h-[130px] md:w-[140px] md:h-[170px] rounded-lg relative right-[16em] md:right-[12em] top-[17em] md:top-[19em]'
-                                src={nextImage.compareUrl} alt='' />
+
                         </div>
                     </div>
                 ))}

@@ -1,24 +1,33 @@
-import React, { useEffect, useState, useRef } from 'react';
-import backgroundImage from '../assets/wood-background.jpg';
-import aboutPics from '../assets/ta-homepics.png';
+import React, { useEffect, useState } from 'react';
+import backgroundImage from '../assets/toni-backgroundlgs.png';
+import toni from '../assets/artist-moi.png'
+import phones from '../assets/ta-about-phones.png'
 import { motion, useAnimation } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 
 const About = () => {
-  const [scrollY, setScrollY] = useState(0);
+  const [isASAVisible, setIsASAVisible] = useState(false);
+  const [isASBVisible, setIsASBVisible] = useState(false);
   const controls = useAnimation();
-  const { ref, inView } = useInView();
-  const elementRef = useRef();
-
-  useEffect(() => {
-    if (inView) {
-      controls.start('visible');
-    }
-  }, [controls, inView]);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrollY(window.scrollY);
+      const aboutsectionA = document.querySelector('.about-section-a');
+      const ASAPosition = aboutsectionA.getBoundingClientRect();
+
+      const aboutsectionB = document.querySelector('.about-section-b');
+      const ASBPosition = aboutsectionB.getBoundingClientRect();
+
+      if (ASAPosition.top < window.innerHeight * 0.5) {
+        setIsASAVisible(true);
+      } else {
+        setIsASAVisible(false);
+      }
+
+      if (ASBPosition.top < window.innerHeight * 0.25) {
+        setIsASBVisible(true);
+      } else {
+        setIsASBVisible(false);
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -28,87 +37,89 @@ const About = () => {
     };
   }, []);
 
-  const calculatePosition = (element) => {
-    if (!element) return 0; // Return 0 if element is undefined
-    const yPos = element.offsetTop - scrollY;
-    const windowHeight = window.innerHeight;
-    const position = yPos / windowHeight;
-    return position;
-  };
+  useEffect(() => {
+    if (isASAVisible) {
+      controls.start({ opacity: 1, y: 0 });
+    } else {
+      controls.start({ opacity: 0, y: 50 });
+    }
+  }, [isASAVisible, controls]);
+
+  useEffect(() => {
+    if (isASBVisible) {
+      controls.start({ opacity: 1, y: 0 });
+    } else {
+      controls.start({ opacity: 0, y: 50 });
+    }
+  }, [isASBVisible, controls]);
 
   return (
 
-      <div id='about'
-        className='sticky overflow-hidden h-[120vh] md:h-screen'
-        style={{
-          backgroundImage: `url(${backgroundImage})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center'
-        }}
-      >
-        <div className='scroll-section absolute h-full py-0 top-0'>
-          <div className='divs-container text-white block gap-x-0 gap-y-12 md:gap-x-12 md:gap-y-0'>
-            <div
-              id='section-a'
-              className='bg-black h-[120vh] md:h-screen pt-20 px-6 bg-opacity-60 block md:flex justify-center items-center'
-            >
-              <motion.p
-                ref={(element) => {
-                  ref(element);
-                  elementRef.current = element;
-                }}
-                className='p-1 text-white text-sm md:text-base w-[95%] text-center mx-auto'
-                initial='hidden'
-                animate={{
-                  opacity: 1,
-                  y: calculatePosition(elementRef.current) * 100,
-                }}
-              >
-                The <span className='text-green-300'> toniarts </span>
-                gallery presents a visual gallery of portraits drawn by Neka Toni-Uebari.
-                The portraits mainly explore the depth and intricate beauty of the black Diaspora.
-                The artist wanted to capture every detail from the shading of melanin to the coils of hair.
-                The people in these drawings are a mixture of people coming from different walks of family, fashion, sports,
-                music and other forms of creativity and intelligence.
-                These drawings are a mirror of the people I am proud of.
-              </motion.p>
-              <motion.img
-                ref={(element) => {
-                  ref(element);
-                  elementRef.current = element;
-                }}
-                src={aboutPics}
-                className='p-5 h-[200px] w-[200px] md:h-[300px] md:w-[300px] mx-auto'
-                alt='about'
-                initial='hidden'
-                animate={{
-                  opacity: 1,
-                  y: calculatePosition(elementRef.current) * 100,
-                }}
-              />
-              <motion.p
-                ref={(element) => {
-                  ref(element);
-                  elementRef.current = element;
-                }}
-                className='p-1 text-white text-sm md:text-base w-[95%] text-center mx-auto'
-                initial='hidden'
-                animate={{
-                  opacity: 1,
-                  y: calculatePosition(elementRef.current) * 100,
-                }}
-              >
-                I am a Nigerian-born British artist with a creative and artistic eye
-                from the childhood. I am self-taught and have grown in my passionate
-                God-given gift for art and drawing for many years.The product of drawing
-                is where I see visions come to life, it is also where I feel most at peace.
-                Who knew a pencil, a paper, a hand and bumping some good Neo soul in the
-                background could go somewhere. More drawings to come later...
-              </motion.p>
+    <div id='about'
+      className='sticky overflow-hidden h-[200vh]'
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center'
+      }}
+    >
+      <div className='scroll-section absolute h-full py-0 top-0'>
+        <div className='divs-container text-white'>
+          <div
+            id='section-a what'
+            className='about-section-a h-screen'
+          >
+            <div className='m-5 p-2 space-y-1'>
+              <span className='text-xl md:text-2xl'> what? </span>
+              <div className='flex space-x-1'>
+                <div className='bg-[#81E5A5] h-1 w-6 md:w-10' />
+                <div className='bg-white h-1 w-6 md:w-10' />
+              </div>
+            </div>
+            <div className='block md:flex'>
+              <div className='block m-5 text-xl md:text-2xl p-3'>
+                <h3 className='p-2 m-2 text-white w-[500px] md:w-[600px]'> the <span className='text-[#81E5A5]'> toniarts. </span> visual gallery is a page that displays portrait drawings from the self-taught Nigerian artist, <span className='text-[#81E5A5]'> toni. </span> These drawings will be portraits which explore the beauty of people in the African and Caribbean mainland and diaspora. This artwork is inspired by a mixture of people, with some people coming from different walks of <span className='text-[#81E5A5]'> music, film, sports, fashion, family </span> and other forms of creativity and intelligence</h3>
+                <h4 className='p-2 m-2 text-white w-[500px] md:w-[600px]'> I gotta <span className='text-[#81E5A5]'> re-ignite </span> my gifts it's been too long. <span className='text-[#81E5A5]'> <br />love to my peopledem. </span> </h4>
+              </div>
+              <motion.img id='phones' className='py-3 px-12 mx-auto w-auto h-[480px] md:h-[700px]' src={phones} alt='phones' animate={controls} />
             </div>
           </div>
+
+          <div
+            id="section-b who"
+            className="about-section-b h-screen flex flex-col justify-between"
+          >
+            <div>
+              <div className="m-5 p-2 space-y-1">
+                <span className="text-xl md:text-2xl"> who? </span>
+                <div className="flex space-x-1">
+                  <div className="bg-[#81E5A5] h-1 w-6 md:w-10" />
+                  <div className="bg-white h-1 w-6 md:w-10" />
+                </div>
+              </div>
+              <div className="block m-5 text-xl md:text-2xl p-3">
+                <h3 className="text-white">meet the artist.</h3>
+                <h3 className="text-[#81E5A5]">nekabari ("nek-abari")</h3>
+                <h3 className="text-white">"give thanks to God"</h3>
+                <br/>
+                <h3> stop hiding your gifts and <br/> unwrap what God gave you.</h3>
+              </div>
+            </div>
+
+            {/* Image placed at the bottom */}
+            <motion.img
+              id="me"
+              className="w-[550px] h-[550px] md:h-[700px] md:w-[700px] self-center" // optional: to center the image horizontally
+              src={toni}
+              alt="me"
+              animate={controls}
+            />
+          </div>
+
+
         </div>
       </div>
+    </div>
 
   );
 };
