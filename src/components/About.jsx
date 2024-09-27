@@ -70,14 +70,14 @@ const About = () => {
             className='about-section-a h-screen'
           >
             <div className='m-5 p-2 space-y-1'>
-              <span className='text-xl md:text-2xl'> what? </span>
+              <span className='text-lg md:text-2xl'> what? </span>
               <div className='flex space-x-1'>
                 <div className='bg-[#81E5A5] h-1 w-6 md:w-10' />
                 <div className='bg-white h-1 w-6 md:w-10' />
               </div>
             </div>
             <div className='block md:flex'>
-              <div className='block m-5 text-xl md:text-2xl p-3'>
+              <div className='block m-5 text-base md:text-xl p-3'>
                 <h3 className='p-2 m-2 text-white w-[500px] md:w-[600px]'> the <span className='text-[#81E5A5]'> toniarts. </span> visual gallery is a page that displays portrait drawings from the self-taught Nigerian artist, <span className='text-[#81E5A5]'> toni. </span> These drawings will be portraits which explore the beauty of people in the African and Caribbean mainland and diaspora. This artwork is inspired by a mixture of people, with some people coming from different walks of <span className='text-[#81E5A5]'> music, film, sports, fashion, family </span> and other forms of creativity and intelligence</h3>
                 <h4 className='p-2 m-2 text-white w-[500px] md:w-[600px]'> I gotta <span className='text-[#81E5A5]'> re-ignite </span> my gifts it's been too long. <span className='text-[#81E5A5]'> <br />love to my peopledem. </span> </h4>
               </div>
@@ -91,13 +91,13 @@ const About = () => {
           >
             <div>
               <div className="m-5 p-2 space-y-1">
-                <span className="text-xl md:text-2xl"> who? </span>
+                <span className="text-lg md:text-2xl"> who? </span>
                 <div className="flex space-x-1">
                   <div className="bg-[#81E5A5] h-1 w-6 md:w-10" />
                   <div className="bg-white h-1 w-6 md:w-10" />
                 </div>
               </div>
-              <div className="block m-5 text-xl md:text-2xl p-3">
+              <div className="block m-5 text-base md:text-xl p-3">
                 <h3 className="text-white">meet the artist.</h3>
                 <h3 className="text-[#81E5A5]">nekabari ("nek-abari")</h3>
                 <h3 className="text-white">"give thanks to God"</h3>
@@ -109,7 +109,7 @@ const About = () => {
             {/* Image placed at the bottom */}
             <motion.img
               id="me"
-              className="w-[550px] h-[550px] md:h-[700px] md:w-[700px] self-center" // optional: to center the image horizontally
+              className="w-[400px] h-[400px] md:h-[600px] md:w-[600px] self-center" // optional: to center the image horizontally
               src={toni}
               alt="me"
               animate={controls}

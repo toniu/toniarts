@@ -70,7 +70,7 @@ function ScrollCarousel({ children }) {
                 ></div>
                 <div id='progress-tracker' className='block text-white backdrop-blur-none'>
                     <motion.div className='p-1 rounded-full bg-[#81E5A5]' style={{ scaleX: scrollYProgress }} />
-                    <span className='py-1 px-4 text-xl md:text-2xl'>
+                    <span className='py-1 px-4 text-lg md:text-xl'>
                         <span className='text-[#81E5A5]'> {activeIndex + 1} </span> | {children.length}
                     </span>
                 </div>
@@ -109,23 +109,23 @@ const Gallery = () => {
                         <div className='pt-20 flex justify-center
                             hover:scale-110 transition 200 hover:cursor-zoom-in' onClick={() => handleImageClick(nextImage.imageUrl)}>
                             <div>
-                                <img className='w-[170px] h-1/2 object-cover object-center'
+                                <img className='w-[150px] h-1/2 object-cover object-center'
                                     src={nextImage.imageUrl} alt={'IMG'} />
-                                <img className='w-[170px]  h-1/2 relative'
+                                <img className='w-[150px]  h-1/2 relative'
                                     src={nextImage.compareUrl} alt={'COMPAREIMG'} />
                             </div>
                             <div className='p-1 block text-white'>
                                 {/* Title and pronunciation */}
-                                <h2 className='px-3 py-1 text-lg md:text-2xl font-normal'>
+                                <h2 className='px-3 py-1 text-base md:text-xl font-normal'>
                                     {nextImage.title}
                                 </h2>
-                                <h2 className='px-3 py-1 text-lg md:text-2xl font-normal'>
+                                <h2 className='px-3 py-1 text-base md:text-xl font-normal'>
                                     ("{nextImage.pronounce}")
                                 </h2>
                                 {/* Description */}
-                                <h3 className='px-3 text-[#81E5A5] text-xl md:text-3xl'>  {nextImage.description} </h3>
+                                <h3 className='px-3 text-[#81E5A5] text-base md:text-2xl'>  {nextImage.description} </h3>
                                 {/* Shadow title */}
-                                <span className='px-3 text-4xl md:text-5xl opacity-10'> {nextImage.title} </span>
+                                <span className='px-3 text-xl md:text-3xl opacity-10'> {nextImage.title} </span>
                             </div>
 
                         </div>

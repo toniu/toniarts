@@ -19,8 +19,8 @@ const ScrollMsg = ({ message }) => {
       transition={{ duration: 0.75 }}
     >
       <div className="flex w-auto gap-x-2 select-none ">
-        <BsMouseFill className="text-2xl md:text-3xl" />
-        <span className="text-lg md:text-xl">{message}</span>
+        <BsMouseFill className="text-xl md:text-2xl" />
+        <span className="text-base md:text-lg">{message}</span>
       </div>
     </motion.div>
   );

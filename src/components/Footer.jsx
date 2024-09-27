@@ -45,8 +45,8 @@ const Footer = () => {
                     alt='me'
                     animate={controls}
                 />
-                <h3 className='py-2 text-white text-lg md:text-xl'>"a budding young artist in the nursery"</h3>
-                <h1 className='py-2 text-5xl md:text-6xl text-green-300'>fin.</h1>
+                <h3 className='py-2 text-white text-base md:text-lg'>"a budding young artist in the nursery"</h3>
+                <h1 className='py-2 text-3xl md:text-5xl text-green-300'>fin.</h1>
                 <ul className='flex justify-center text-3xl md:text-5xl text-white'>
                     <li className='nav-item p-2'>
                         <a href="https://www.instagram.com/toniartsg" target="_blank" rel="noopener noreferrer"
@@ -70,7 +70,7 @@ const Footer = () => {
                         </a>
                     </li>
                 </ul>
-                <div className='bottom text-white text-center py-2 text-lg md:text-xl'>
+                <div className='bottom text-white text-center py-2 text-base md:text-lg'>
                     <span className='line mb-4'></span>
                     <p>2024 toni., inc. all rights reserved</p>
                 </div>
