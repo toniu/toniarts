@@ -97,7 +97,7 @@ const Intro = () => {
             opacity: 1,
             y: calculatePosition(elementRef.current) * 110,
           }}
-          className='text-5xl md:text-7xl text-[#81E5A5] font-normal'>
+          className='text-6xl md:text-7xl text-[#81E5A5] font-normal'>
           toni<span className='text-white'>arts.</span>
         </motion.h1>
         <motion.h3
