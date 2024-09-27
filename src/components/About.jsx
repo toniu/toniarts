@@ -100,7 +100,7 @@ const About = () => {
               <div className="block m-5 text-base md:text-xl p-3">
                 <h3 className="text-white">meet the artist.</h3>
                 <h3 className="text-[#81E5A5]">nekabari ("nek-abari")</h3>
-                <h3 className="text-white">"give thanks to God"</h3>
+                <h3 className="text-white">"give honour to God"</h3>
                 <br/>
                 <h3> stop hiding your gifts and <br/> unwrap what God gave you.</h3>
               </div>
