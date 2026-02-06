@@ -37,12 +37,12 @@ function App() {
 
       /* The message should only show if the scroll position falls in any of these regions */
       const msgIntroSection = scrollPosition < acComponent.offsetTop * 0.2;
-      const msgAboutSection =
+      /* const msgAboutSection =
         scrollPosition > acComponent.offsetTop * 1.75 &&
-        scrollPosition < acComponent.offsetTop * 2.25;
+        scrollPosition < acComponent.offsetTop * 2.25; */
 
-      setScrollString("use scroll");
-      setShowScrollMsg(msgIntroSection || msgAboutSection);
+      setScrollString("Use Scroll");
+      setShowScrollMsg(msgIntroSection);
     };
 
     window.addEventListener("scroll", handleScroll);

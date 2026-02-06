@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, useScroll } from 'framer-motion';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import useWindowScroll from '@react-hook/window-scroll';
 import useScrollWidth from './utils/useScrollWidth';
 
@@ -15,7 +15,7 @@ function ScrollCarousel({ children }) {
 
     const top = refHeight.current ? refHeight.current.offsetTop : 0;
     const width = refHeight.current ? refHeight.current.offsetWidth : 0;
-    const elHeight = scrollWidth - (window.innerWidth - window.innerHeight) + width * 0.5;
+    const elHeight = Math.max(0, scrollWidth - (window.innerWidth - window.innerHeight) + width * 0.5);
 
     const interpTransform = (o, xy) => {
         const mouseMoveDepth = 40;
@@ -34,14 +34,22 @@ function ScrollCarousel({ children }) {
 
     const [activeIndex, setActiveIndex] = useState(0);
     useEffect(() => {
-        if (elHeight !== 0) {
-            const progress = Math.abs(scrollY) / elHeight;
-            const newIndex = Math.min(children.length, Math.max(1, Math.floor(progress * children.length)));
-            setActiveIndex(newIndex - 1);
+        if (elHeight > 0) {
+            const scrollDistance = Math.min(
+                elHeight,
+                Math.max(0, scrollY - top)
+            );
+            const segment = elHeight / Math.max(1, children.length);
+            const lead = segment * 0.35;
+            const indexFloat = (scrollDistance + lead) / segment;
+            const maxIndex = Math.max(0, children.length - 1);
+            const newIndex = Math.min(maxIndex, Math.max(0, Math.floor(indexFloat)));
+            setActiveIndex(newIndex);
         }
-    }, [scrollY, elHeight, children.length]);
+    }, [scrollY, elHeight, children.length, top]);
 
     const { scrollYProgress } = useScroll();
+    const bgY = useTransform(scrollYProgress, [0, 1], [-12, 12]);
 
     return (
         <div
@@ -49,14 +57,27 @@ function ScrollCarousel({ children }) {
             ref={refHeight}
             style={{ height: elHeight }}
         >
-            <div
-                className="sticky-box"
-                style={{
-                    backgroundImage: `url(${galleryData[activeIndex].compareUrl})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                }}
-            >
+            {/* Sticky background + gallery track */}
+            <div className="sticky-box">
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        key={activeIndex}
+                        className="absolute inset-0"
+                        style={{
+                            y: bgY,
+                            scale: 1.03,
+                            backgroundImage: `url(${galleryData[activeIndex].compareUrl})`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center',
+                        }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.33, ease: 'easeOut' }}
+                    />
+                </AnimatePresence>
+                {/* Dark overlay for readability */}
+                {/* Dark overlay + vignette */}
                 <div
                     className="overlay backdrop-blur-sm" // Add overlay class
                     style={{
@@ -65,22 +86,28 @@ function ScrollCarousel({ children }) {
                         left: 0,
                         width: '100%',
                         height: '100%',
-                        backgroundColor: 'rgba(0, 0, 0, 0.85)', // Adjust opacity here
+                        backgroundColor: 'rgba(0, 0, 0, 0.8)'
                     }}
-                ></div>
-                <div id='progress-tracker' className='block text-white backdrop-blur-none'>
-                    <motion.div className='p-1 rounded-full bg-[#81E5A5]' style={{ scaleX: scrollYProgress }} />
-                    <span className='py-1 px-4 text-lg md:text-xl'>
-                        <span className='text-[#81E5A5]'> {activeIndex + 1} </span> | {children.length}
+                />
+                <div className="gallery-vignette" />
+
+                {/* Progress indicator */}
+                <div className='gallery-progress'>
+                    <div className='gallery-progress__track'>
+                        <motion.div className='gallery-progress__fill' style={{ scaleX: scrollYProgress }} />
+                    </div>
+                    <span className='gallery-progress__label'>
+                        <span className='text-[#81E5A5]'> {activeIndex + 1} </span> / {children.length}
                     </span>
                 </div>
-                <div
+                {/* Horizontal track */}
+                <motion.div
                     style={{ transform: interpTransform(scrollY, [0, 0]) }}
                     className="transform-box"
                     ref={refTransform}
                 >
                     {children}
-                </div>
+                </motion.div>
             </div>
         </div>
 
@@ -89,6 +116,9 @@ function ScrollCarousel({ children }) {
 
 
 const Gallery = () => {
+
+    const { scrollYProgress: galleryScroll } = useScroll();
+    const contentY = useTransform(galleryScroll, [0, 1], [6, -6]);
 
     const [overlayImage, setOverlayImage] = useState(null);
 
@@ -102,38 +132,42 @@ const Gallery = () => {
 
     return (
         <div id='gallery'
-            className='sticky-parent'>
+            className='gallery-section sticky-parent'>
+            {/* Gallery items */}
             <ScrollCarousel>
                 {galleryData.map((nextImage, index) => (
-                    <div key={index} className='box w-[50rem] md:w-[65rem]'>
-                        <div className='pt-20 flex justify-center
-                            hover:scale-110 transition 200 hover:cursor-zoom-in' onClick={() => handleImageClick(nextImage.imageUrl)}>
-                            <div>
-                                <img className='w-[150px] h-1/2 object-cover object-center'
+                    <div key={index} className='box w-[54rem] md:w-[70rem] flex items-center justify-center'>
+                        <motion.div
+                            style={{ y: contentY }}
+                            className='flex items-center justify-center hover:cursor-zoom-in'
+                            onClick={() => handleImageClick(nextImage.imageUrl)}
+                        >
+                            <div className="drawing-with-comparison gallery-card__media">
+                                <img className='w-[170px] md:w-[200px] h-1/2 object-cover object-center rounded-t-xl'
                                     src={nextImage.imageUrl} alt={'IMG'} />
-                                <img className='w-[150px]  h-1/2 relative'
+                                <img className='w-[170px] md:w-[200px] h-1/2 relative rounded-b-xl'
                                     src={nextImage.compareUrl} alt={'COMPAREIMG'} />
                             </div>
-                            <div className='p-1 block text-white'>
+                            <div className='gallery-card__meta p-5 md:p-6 block text-white'>
                                 {/* Title and pronunciation */}
-                                <h2 className='px-3 py-1 text-base md:text-xl font-normal'>
+                                <h2 className='px-3 py-1 text-base md:text-xl font-bold'>
                                     {nextImage.title}
                                 </h2>
-                                <h2 className='px-3 py-1 text-base md:text-xl font-normal'>
+                                <h2 className='px-3 py-1 text-sm md:text-base font-light'>
                                     ("{nextImage.pronounce}")
                                 </h2>
                                 {/* Description */}
                                 <h3 className='px-3 text-[#81E5A5] text-base md:text-2xl'>  {nextImage.description} </h3>
                                 {/* Shadow title */}
-                                <span className='px-3 text-xl md:text-3xl opacity-10'> {nextImage.title} </span>
+                                <span className='px-3 text-xl md:text-3xl opacity-10 font-bold'> {nextImage.title} </span>
                             </div>
 
-                        </div>
+                        </motion.div>
                     </div>
                 ))}
             </ScrollCarousel>
 
-            {/* Overlay */}
+            {/* Lightbox overlay */}
             {overlayImage && (
                 <motion.div
                     className="z-20 fixed overflow-y-hidden top-0 left-0 w-full h-full bg-black bg-opacity-75 flex items-center justify-center

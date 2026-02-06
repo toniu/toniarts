@@ -54,8 +54,8 @@ const Intro = () => {
 
   return (
     <section id='intro'
-      className='h-screen flex justify-center items-center relative overflow-hidden'>
-      {/* Background Scroll */}
+      className='intro-section h-screen flex justify-center items-center relative overflow-hidden'>
+      {/* Background strip parallax */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
         <div className={`absolute top-0 left-0 w-full h-full object-cover`}>
           <motion.div className='flex'
@@ -82,7 +82,7 @@ const Intro = () => {
         </div>
       </div>
 
-      {/* Content */}
+      {/* Title content */}
       <motion.div className='relative container z-10 text-center'
       initial={{ opacity: 0, y: 0 }}
       animate={{ opacity: 1, y: -10 }}
