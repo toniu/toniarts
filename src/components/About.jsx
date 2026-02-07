@@ -23,7 +23,6 @@ const About = () => {
     offset: ['start end', 'end start']
   });
   const phonesY = useTransform(phonesScroll, [0, 1], [28, -28]);
-  const phonesRotate = useTransform(phonesScroll, [0, 1], [-2.5, 2.5]);
   const phonesScale = useTransform(phonesScroll, [0, 1], [0.9, 1]);
 
   const meRef = useRef(null);
@@ -32,7 +31,6 @@ const About = () => {
     offset: ['start end', 'end start']
   });
   const meY = useTransform(meScroll, [0, 1], [20, -20]);
-  const meRotate = useTransform(meScroll, [0, 1], [2.5, -2.5]);
   const meScale = useTransform(meScroll, [0, 1], [0.9, 1]);
 
   const { scrollYProgress: aboutScroll } = useScroll({
@@ -40,6 +38,7 @@ const About = () => {
     offset: ['start end', 'end start']
   });
   const bgY = useTransform(aboutScroll, [0, 1], ['-15%', '15%']);
+  const bgScale = useTransform(aboutScroll, [0, 1], [1, 2]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -96,7 +95,7 @@ const About = () => {
         className='absolute -inset-x-0 -top-[8%] h-[116%]'
         style={{
           y: bgY,
-          scale: 1.02,
+          scale: bgScale,
           backgroundImage: `url(${backgroundImage})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center'
@@ -113,7 +112,7 @@ const About = () => {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: isASAVisible ? 1 : 0, y: isASAVisible ? 0 : 12 }}
               transition={{ duration: 0.4, ease: 'easeOut' }}
-              className='bg-black/60 text-center md:text-left w-screen px-5 py-6 md:py-8 backdrop-blur-sm'
+              className='bg-black/10 text-center md:text-left w-screen px-5 py-6 md:py-8 backdrop-blur-sm'
             >
               <p className='text-xs md:text-sm uppercase tracking-[0.35em] text-[#81E5A5]'>What</p>
               <h2 className='mt-2 text-2xl md:text-3xl text-white'>A visual gallery of portraits</h2>
@@ -121,13 +120,13 @@ const About = () => {
             </motion.div>
             {/* Content + phones visual */}
             <div className='grid grid-cols-1 md:grid-cols-[1.1fr_0.9fr] gap-8 md:gap-12 items-center px-8 md:px-12 py-7 md:pt-16'>
-              <div className='text-sm md:text-base text-center md:text-left leading-relaxed md:leading-relaxed max-w-2xl'>
+              <div className='text-sm md:text-base font-light text-center md:text-left leading-relaxed md:leading-relaxed max-w-2xl'>
                 <p>
                   The <span className='text-[#81E5A5]'>toniarts.</span> Visual Gallery is a curated collection of portrait drawings by self-taught Nigerian artist, <span className='text-[#81E5A5]'>toni. </span>
                   <br /><br />
                   The work explores the beauty, creativity, and complexity of people across the African and Caribbean mainland and diaspora. Each portrait is inspired by individuals from different walks of life — <span className='text-[#81E5A5]'>music, film, sports, fashion, family, and everyday brilliance.</span>
                   <br /><br />
-                  This body of work is a reflection, a remembering, and a return.
+                  This body of work is a reflection, a remembering, and a return to story.
                   <br /><br />
                   I gotta <span className='text-[#81E5A5]'>re-ignite</span> my gifts — it’s been too long.
                   <br />
@@ -137,7 +136,7 @@ const About = () => {
               {/* Phones visual (parallax) */}
               <motion.div
                 ref={phonesRef}
-                style={{ y: phonesY, rotate: phonesRotate, scale: phonesScale }}
+                style={{ y: phonesY, scale: phonesScale }}
                 className='mx-auto'
               >
                 <div className='mx-auto rounded-full bg-black/10 p-2 backdrop-blur-sm shadow-[0_20px_60px_rgba(0,0,0,0.35)]'>
@@ -161,7 +160,7 @@ const About = () => {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: isASBVisible ? 1 : 0, y: isASBVisible ? 0 : 12 }}
               transition={{ duration: 0.4, ease: 'easeOut' }}
-              className='bg-black/60 text-center md:text-left w-screen px-5 py-6 md:py-8 backdrop-blur-sm '
+              className='bg-black/10 text-center md:text-left w-screen px-5 py-6 md:py-8 backdrop-blur-sm '
             >
               <p className='text-xs md:text-sm uppercase tracking-[0.35em] text-[#81E5A5]'>Who</p>
               <h2 className='mt-2 text-2xl md:text-3xl text-white'>Meet the artist</h2>
@@ -171,23 +170,23 @@ const About = () => {
             {/* Content + artist visual */}
             <div className="px-5 md:px-10 py-7 ">
               <div className="grid grid-cols-1 md:grid-cols-[1.1fr_0.9fr] gap-6 md:gap-10 items-center">
-                <div className="text-sm md:text-base leading-relaxed md:leading-relaxed max-w-2xl">
+                <div className="text-sm md:text-base text-center md:text-left leading-relaxed md:leading-relaxed max-w-2xl">
                   <h3 className="text-[#81E5A5] text-2xl md:text-3xl font-bold">nekabari <span className="font-light">("nek-abari")</span></h3>
                   <h3 className="text-white text-lg md:text-xl font-semibold">"give honour to God"</h3>
                   <br />
-                  <h3> A self-taught Nigerian artist working primarily in portraiture.
+                  <p className="font-light"> A self-taught Nigerian artist working primarily in portraiture.
                     <br />
                     This space is both a reminder and a challenge:
                     <br /><br />
                     Stop hiding your <span className="text-[#81E5A5]">gifts.</span>
                     <br /> <span className="text-[#81E5A5]">Unwrap</span> what God gave you.
-                  </h3>
+                  </p>
                 </div>
 
                 {/* Artist image (parallax) */}
                 <motion.div
                   ref={meRef}
-                  style={{ y: meY, rotate: meRotate, scale: meScale }}
+                  style={{ y: meY, scale: meScale }}
                   className="mx-auto md:ml-auto"
                 >
                   <div className='rounded-full bg-black/20 p-2 backdrop-blur-sm shadow-[0_20px_60px_rgba(0,0,0,0.35)]'>
@@ -210,7 +209,7 @@ const About = () => {
           >
             <motion.div
               style={{ opacity: archiveOpacity }}
-              className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/80 to-black"
+              className="absolute inset-0 bg-gradient-to-b from-black/0  to-black/80"
             />
             <motion.div
               style={{ y: archiveY, opacity: archiveOpacity }}

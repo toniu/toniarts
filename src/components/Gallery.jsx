@@ -70,9 +70,9 @@ function ScrollCarousel({ children }) {
                             backgroundSize: 'cover',
                             backgroundPosition: 'center',
                         }}
-                        initial={{ opacity: 0 }}
+                        initial={{ opacity: 0.25 }}
                         animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
+                        exit={{ opacity: 0.25 }}
                         transition={{ duration: 0.33, ease: 'easeOut' }}
                     />
                 </AnimatePresence>
@@ -86,7 +86,7 @@ function ScrollCarousel({ children }) {
                         left: 0,
                         width: '100%',
                         height: '100%',
-                        backgroundColor: 'rgba(0, 0, 0, 0.8)'
+                        backgroundColor: 'rgba(0, 0, 0, 0.85)'
                     }}
                 />
                 <div className="gallery-vignette" />
@@ -148,7 +148,7 @@ const Gallery = () => {
                                 <img className='w-[170px] md:w-[200px] h-1/2 relative rounded-b-xl'
                                     src={nextImage.compareUrl} alt={'COMPAREIMG'} />
                             </div>
-                            <div className='gallery-card__meta p-5 md:p-6 block text-white'>
+                            <div className='gallery-card__meta p-5 md:p-6 h-auto block text-white border-t-2 border-b-2 border-t-gray-200/25 border-b-green-400/25 rounded-l-none rounded-r-xl'>
                                 {/* Title and pronunciation */}
                                 <h2 className='px-3 py-1 text-base md:text-xl font-bold'>
                                     {nextImage.title}
