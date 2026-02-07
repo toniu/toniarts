@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/toniarts/static/css/main.0e73d9f6.css",
-    "main.js": "/toniarts/static/js/main.8cad1411.js",
-    "static/js/453.8687493b.chunk.js": "/toniarts/static/js/453.8687493b.chunk.js",
+    "main.css": "/toniarts/static/css/main.d40c692a.css",
+    "main.js": "/toniarts/static/js/main.705b29ce.js",
+    "static/js/453.e70f98f2.chunk.js": "/toniarts/static/js/453.e70f98f2.chunk.js",
     "static/media/pic-1.jpg": "/toniarts/static/media/pic-1.b5a9cff0acaf321f5755.jpg",
     "static/media/pic-6.jpg": "/toniarts/static/media/pic-6.37e2d9570e2a00196e33.jpg",
     "static/media/pic-8.jpg": "/toniarts/static/media/pic-8.140aa82e4839ef724f83.jpg",
@@ -30,12 +30,12 @@
     "static/media/artist-moi.png": "/toniarts/static/media/artist-moi.d3dd37eda40edd69781f.png",
     "static/media/prodigy-background-ta.jpg": "/toniarts/static/media/prodigy-background-ta.6864bf81a147c19670a4.jpg",
     "index.html": "/toniarts/index.html",
-    "main.0e73d9f6.css.map": "/toniarts/static/css/main.0e73d9f6.css.map",
-    "main.8cad1411.js.map": "/toniarts/static/js/main.8cad1411.js.map",
-    "453.8687493b.chunk.js.map": "/toniarts/static/js/453.8687493b.chunk.js.map"
+    "main.d40c692a.css.map": "/toniarts/static/css/main.d40c692a.css.map",
+    "main.705b29ce.js.map": "/toniarts/static/js/main.705b29ce.js.map",
+    "453.e70f98f2.chunk.js.map": "/toniarts/static/js/453.e70f98f2.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0e73d9f6.css",
-    "static/js/main.8cad1411.js"
+    "static/css/main.d40c692a.css",
+    "static/js/main.705b29ce.js"
   ]
 }
