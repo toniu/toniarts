@@ -17,6 +17,10 @@ main {
     height: 100%;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 
 .padding-block {
     display: flex;
@@ -61,7 +65,8 @@ main {
     position: absolute;
     top: 24px;
     left: 50%;
-    width: 225px;
+    max-width: 90vw;
+    white-space: nowrap;
     transform: translateX(-50%);
     display: flex;
     align-items: center;
@@ -76,7 +81,7 @@ main {
 }
 
 .gallery-progress__track {
-    width: 120px;
+    width: min(32vw, 140px);
     height: 3px;
     background: rgba(255, 255, 255, 0.15);
     border-radius: 9999px;
@@ -93,6 +98,18 @@ main {
 .gallery-progress__label {
     font-size: 14px;
     letter-spacing: 0.02em;
+    white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+    .gallery-progress {
+        gap: 10px;
+        padding: 6px 10px;
+    }
+
+    .gallery-progress__label {
+        font-size: 12px;
+    }
 }
 
 .gallery-vignette {
